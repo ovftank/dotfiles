@@ -234,9 +234,9 @@ call plug#end()
 	nmap <leader>l  <Plug>(coc-codelens-action)
 
 	" Formatting selected code.
-	xmap <C-I>  <Plug>(coc-format-selected)
-	nmap <C-I>  <Plug>(coc-format-selected)
-	vmap <C-I>  <Plug>(coc-format-selected)
+	xmap <C-J>  <Plug>(coc-format-selected)
+	nmap <C-J>  <Plug>(coc-format-selected)
+	vmap <C-J>  <Plug>(coc-format-selected)
 
 	"Make <CR> auto-select the first completion item
 	imap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
