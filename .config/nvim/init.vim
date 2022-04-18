@@ -4,7 +4,7 @@
 		set clipboard=unnamedplus 		"enable system clipboard sync 			
 		set hidden 						"hidden E37 error
 		set hlsearch 					"highlight search
-		set ignorecase 					"enable case-sensitive
+		" set ignorecase 					"enable case-sensitive
 		set mouse=a 					"enable mouse
 		set nobackup 					"disable backup
 		set nowb 						"disable backup
@@ -228,15 +228,15 @@ call plug#end()
 	nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 	"Applying codeAction to the current buffer.
-	nmap <Aleader>ac <Plug>(coc-codeaction)
+	nmap <leader>ac <Plug>(coc-codeaction)
 
 	" Code Lens action on the current line.
 	nmap <leader>l  <Plug>(coc-codelens-action)
 
 	" Formatting selected code.
-	xmap <C-J>  <Plug>(coc-format-selected)
-	nmap <C-J>  <Plug>(coc-format-selected)
-	vmap <C-J>  <Plug>(coc-format-selected)
+	xmap <C-w>  <Plug>(coc-format-selected)
+	nmap <C-w>  ggVG<Plug>(coc-format-selected)
+	imap <C-w>  <ESC>ggVG<Plug>(coc-format-selected)
 
 	"Make <CR> auto-select the first completion item
 	imap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
