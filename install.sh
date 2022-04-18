@@ -45,6 +45,5 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 sudo rm /etc/X11/xinit/xinitrc
 sudo cp dotfiles/xinit/xinitrc /etc/X11/xinit/xinitrc
 sudo cp -r dotfiles/xorg.conf.d /etc/X11/
-curl -sL install-node.vercel.app/lts | bash
 sudo pacman -Sc
 rm -rf ~/dotfiles
