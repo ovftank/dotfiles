@@ -1,7 +1,7 @@
 "General settings
 		filetype plugin on
 		set autoindent 					"auto-indent at line break	
-		set clipboard=unnamedplus 		"enable system clipboard sync 			
+		set clipboard^=unnamed,unnamedplus 		"enable system clipboard sync 			
 		set hidden 						"hidden E37 error
 		set hlsearch 					"highlight search
 		" set ignorecase 					"enable case-sensitive
