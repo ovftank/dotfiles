@@ -11,6 +11,7 @@ sudo chmod +x install.sh
 ./install.sh
 rm -rf ~/dotfiles
 sudo -i
+```
 curl -sL install-node.vercel.app/lts | bash
 exit
 exit
