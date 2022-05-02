@@ -11,6 +11,11 @@ sudo chmod +x install.sh
 ./install.sh
 rm -rf ~/dotfiles
 ```
+### Install NodeJS for CocVim
+```
+sudo pacman -S nodejs
+```
+if command does not work please use this
 ```
 sudo -i
 curl -sL install-node.vercel.app/lts | bash
