@@ -17,7 +17,7 @@ sudo pacman -S dmenu
 sudo pacman -S lxappearance
 sudo pacman -S pcmanfm
 yay -S google-chrome
-yay -S ibus-unikey
+yay -S ibus-bamboo
 sudo pacman -Rsucn pulseaudio
 sudo pacman -S alsa-utils
 sudo gpasswd -a $(/usr/bin/users) audio
