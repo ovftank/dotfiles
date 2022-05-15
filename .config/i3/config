@@ -50,8 +50,10 @@ exec --no-startup-id pulseaudio --start -D
   #Workspace
         bindsym $mod+1 workspace 1
         bindsym $mod+2 workspace 2
+		bindsym $mod+3 workspace 3
         bindsym $mod+Shift+1 move container to workspace 1
         bindsym $mod+Shift+2 move container to workspace 2
+		bindsym $mod+Shift+3 move container to workspace 3
 #i3
         bindsym Print exec maim -s -u | xclip -selection clipboard -t image/png -i
         bindsym $mod+Shift+r restart

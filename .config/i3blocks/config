@@ -72,36 +72,6 @@ border_right=0
 border_bottom=0
 border_left=0
 
-[gpu_stats]
-command=nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | awk '{ printf "%02i<span color=\"#ffb86c\">%</span>", $0}' && nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits | awk '{ printf " %i<span color=\"#ffb86c\">°C</span>\n", $0}'
-label=<span color="#ffb86c"><b>GPU: </b></span>
-interval=2
-border=#ffb86c
-border_top=1
-border_right=0
-border_bottom=0
-border_left=0
-
-[cpu_stats]
-command=sar -u 1 1 | awk 'FNR == 5 { printf "%04.1f<span color=\"#ff5555\">%</span>", (100 - $8) } ' && sensors | awk '{ if ($1 == "CPU" && $2 == "Temperature:") { gsub(/[+°C]/, "") ; printf " %i<span color=\"#ff5555\">°C</span>\n", $3 } }'
-interval=2
-label=<span color="#ff5555"><b>CPU: </b></span>
-border=#ff5555
-border_top=1
-border_right=0
-border_bottom=0
-border_left=0
-
-[memory]
-command=free --giga | awk 'FNR==2{ printf "%i<span color=\"#ff79c6\">GiB</span>\n", $7 }'
-interval=2
-label=<span color="#ff79c6"> </span>
-border=#ff79c6
-border_top=1
-border_right=0
-border_bottom=0
-border_left=0
-
 [volume]
 command=pulseaudio-ctl full-status | awk '{ printf "%i<span color=\"#bd93f9\">%</span>\n", $1 }'
 interval=1
@@ -113,7 +83,7 @@ border_bottom=0
 border_left=0
 
 [time_cst]
-command=TZ=":US/Central" date '+%I : %M ' | awk '{ printf "%s<span color=\"#50fa7b\">%s</span>%s<span color=\"#50fa7b\"> %s</span>\n", $1, $2, $3, $4 }'
+command=date '+%I : %M ' | awk '{ printf "%s<span color=\"#50fa7b\">%s</span>%s<span color=\"#50fa7b\"> %s</span>\n", $1, $2, $3, $4 }'
 interval=1
 label=<span color="#50fa7b"> </span>
 border=#50fa7b
@@ -123,7 +93,7 @@ border_bottom=0
 border_left=0
 
 [date]
-command=LC_ALL="vi_VN.UTF-8" date '+%Y : %B : %d : %A。' | awk '{ printf "%s<span color=\"#ff5555\">%s%s</span>%s<span color=\"#ff5555\">%s %s</span>\n", $1, $2, $3, $4, $5, $6 }'
+command=LC_ALL="vi_VN.UTF-8" date '+%Y:%B:%d' | awk '{ printf "%s<span color=\"#ff5555\">%s%s</span>%s<span color=\"#ff5555\">%s %s</span>\n", $1, $2, $3, $4, $5, $6 }'
 interval=60
 label=<span color="#ff5555"> </span>
 border=#ff5555
