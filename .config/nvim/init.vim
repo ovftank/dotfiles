@@ -1,10 +1,12 @@
 "General settings
+highlight Normal ctermbg=000000CC
+highlight NonText ctermbg=000000CC
 		filetype plugin on
 		set autoindent 					"auto-indent at line break	
 		set clipboard^=unnamed,unnamedplus 		"enable system clipboard sync 			
 		set hidden 						"hidden E37 error
 		set hlsearch 					"highlight search
-		" set ignorecase 					"enable case-sensitive
+		set ignorecase 					"enable case-sensitive
 		set mouse=a 					"enable mouse
 		set nobackup 					"disable backup
 		set nowb 						"disable backup

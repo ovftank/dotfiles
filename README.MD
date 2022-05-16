@@ -22,12 +22,3 @@ curl -sL install-node.vercel.app/lts | bash
 exit
 exit
 ```
-### I love minimalism.
-But if you want to use wallpaper and add transparency. Let's run the following commands:
-```
-sudo pacman -S feh
-sudo pacman -S picom
-rm ~/.config/i3/config
-mv ~/dotfiles/.config/i3/config2 ~/.config/i3/config
-```
-##
