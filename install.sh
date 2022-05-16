@@ -18,8 +18,8 @@ sudo pacman -S lxappearance
 sudo pacman -S pcmanfm
 yay -S google-chrome
 yay -S ibus-bamboo
-sudo pacman -Rsucn pulseaudio
-sudo pacman -S alsa-utils
+sudo pacman -S pulseaudio
+yay -S pulseaudio-ctl
 sudo gpasswd -a $(/usr/bin/users) audio
 
 sudo rm -rf ~/.config/i3
