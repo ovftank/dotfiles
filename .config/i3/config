@@ -5,8 +5,10 @@ font pango:monospace 10
 # Startup
 exec --no-startup-id nm-applet
 exec --no-startup-id ibus-daemon -drxR
-exec --no-startup-id pulseaudio -k
-exec --no-startup-id pulseaudio --start -D
+# exec --no-startup-id pulseaudio -k
+# exec --no-startup-id pulseaudio --start -D
+exec --no-startup-id exec feh --bg-scale ~/Pictures/*.jpg
+exec --no-startup-id exec picom -b
 #Gaps
         for_window [class="^.*"] border pixel 2 
         gaps inner 15 
@@ -20,9 +22,9 @@ exec --no-startup-id pulseaudio --start -D
 
 # Key bind
 
-		bindsym Mod1+F1 exec amixer set Master toggle
-		bindsym Mod1+F2 exec amixer set Master 5%-
-		bindsym Mod1+F3 exec amixer set Master 5%+
+		bindsym Mod1+F1 exec /usr/bin/pulseaudio-ctl mute
+		bindsym Mod1+F2 exec /usr/bin/pulseaudio-ctl down
+		bindsym Mod1+F3 exec /usr/bin/pulseaudio-ctl up
 #Open program
         bindsym $mod+r  exec terminator
         bindsym $mod+e  exec pcmanfm
