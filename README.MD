@@ -8,7 +8,7 @@ cd ~
 git clone https://github.com/goMb1z/dotfiles.git
 cd dotfiles
 sudo chmod +x i1.sh
-./install.sh
+./i1.sh
 rm -rf ~/dotfiles
 ```
 ### Install NodeJS for CocVim
