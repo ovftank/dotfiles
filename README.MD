@@ -7,7 +7,7 @@
 cd ~
 git clone https://github.com/goMb1z/dotfiles.git
 cd dotfiles
-sudo chmod +x install.sh
+sudo chmod +x i1.sh
 ./install.sh
 rm -rf ~/dotfiles
 ```
