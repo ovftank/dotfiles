@@ -6,7 +6,7 @@ highlight NonText ctermbg=000000CC
 		set clipboard^=unnamed,unnamedplus 		"enable system clipboard sync 			
 		set hidden 						"hidden E37 error
 		set hlsearch 					"highlight search
-		set ignorecase 					"enable case-sensitive
+		" set ignorecase 					"enable case-sensitive
 		set mouse=a 					"enable mouse
 		set nobackup 					"disable backup
 		set nowb 						"disable backup
