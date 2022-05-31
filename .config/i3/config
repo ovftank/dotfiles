@@ -1,3 +1,9 @@
+#              __  __ _     _
+#   __ _  ___ |  \/  | |__ / |____
+#  / _` |/ _ \| |\/| | '_ \| |_  /
+# | (_| | (_) | |  | | |_) | |/ /
+#  \__, |\___/|_|  |_|_.__/|_/___|
+#  |___/
 # Set mod key
 set $mod Mod4
 # Font
@@ -5,8 +11,8 @@ font pango:monospace 10
 # Startup
 exec --no-startup-id nm-applet
 exec --no-startup-id ibus-daemon -drxR
-# exec --no-startup-id pulseaudio -k
-# exec --no-startup-id pulseaudio --start -D
+exec --no-startup-id pulseaudio -k
+exec --no-startup-id pulseaudio --start -D
 exec --no-startup-id exec feh --bg-scale ~/Pictures/*.jpg
 exec --no-startup-id exec picom -b
 #Gaps
@@ -42,23 +48,20 @@ exec --no-startup-id exec picom -b
         bindsym $mod+d  move right
         floating_modifier  $mod
   #Resize        
-        bindsym $mod+Ctrl+l  resize shrink width 1 px or 1 ppt
-        bindsym $mod+Ctrl+i  resize grow height 1 px or 1 ppt
+        bindsym $mod+Ctrl+l resize shrink width 1 px or 1 ppt
+        bindsym $mod+Ctrl+i    resize grow height 1 px or 1 ppt
         bindsym $mod+Ctrl+k  resize shrink height 1 px or 1 ppt
         bindsym $mod+Ctrl+j  resize grow width 1 px or 1 ppt
   #Gaps
         bindsym $mod+z          gaps outer current plus 5
-        bindsym $mod+Shift+z	gaps outer current minus 5
+        bindsym $mod+Shift+z	  gaps outer current minus 5
   #Workspace
         bindsym $mod+1 workspace 1
         bindsym $mod+2 workspace 2
 		bindsym $mod+3 workspace 3
-		bindsym $mod+4 workspace 4
-
         bindsym $mod+Shift+1 move container to workspace 1
         bindsym $mod+Shift+2 move container to workspace 2
 		bindsym $mod+Shift+3 move container to workspace 3
-		bindsym $mod+Shift+4 move container to workspace 4
 #i3
         bindsym Print exec maim -s -u | xclip -selection clipboard -t image/png -i
         bindsym $mod+Shift+r restart
