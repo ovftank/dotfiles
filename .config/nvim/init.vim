@@ -1,3 +1,9 @@
+"              __  __ _     _
+"   __ _  ___ |  \/  | |__ / |____
+"  / _` |/ _ \| |\/| | '_ \| |_  /
+" | (_| | (_) | |  | | |_) | |/ /
+"  \__, |\___/|_|  |_|_.__/|_/___|
+"  |___/
 "General settings
 highlight Normal ctermbg=000000CC
 highlight NonText ctermbg=000000CC

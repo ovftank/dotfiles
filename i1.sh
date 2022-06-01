@@ -9,7 +9,7 @@ sudo pacman -S maim 		#screen capture
 sudo pacman -S neofetch 	#show OS info
 sudo pacman -S noto-fonts 	#font for zsh
 sudo pacman -S pcmanfm 		#explorer
-sudo pacman -S picom 		#add transparent
+# sudo pacman -S picom 		#add transparent
 sudo pacman -S pulseaudio 	#install audio daemon
 sudo pacman -S terminator 	#terminal
 sudo pacman -S xclip 		#active clipboard for maim and nvim
