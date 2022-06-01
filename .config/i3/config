@@ -27,7 +27,8 @@ exec --no-startup-id exec picom -b
         bindsym $mod+l focus right
 
 # Key bind
-
+		bindsym Mod1+5  exec killall picom
+		bindsym Mod1+6  exec picom -b
 		bindsym Mod1+F1 exec /usr/bin/pulseaudio-ctl mute
 		bindsym Mod1+F2 exec /usr/bin/pulseaudio-ctl down
 		bindsym Mod1+F3 exec /usr/bin/pulseaudio-ctl up
@@ -40,6 +41,7 @@ exec --no-startup-id exec picom -b
         bindsym F11      fullscreen toggle
         bindsym $mod+x   move scratchpad
         bindsym Mod1+Tab scratchpad show floating toggle
+		bindsym Mod1+Shift+Tab floating toggle
         bindsym Mod1+F4  kill
   #Move
         bindsym $mod+a  move left
