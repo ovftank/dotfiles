@@ -15,8 +15,8 @@
   go_right = <Primary><Shift>l
   rotate_cw = ""
   rotate_ccw = ""
-  split_horiz = <Primary>j
-  split_vert = <Primary>l
+  split_horiz = <Primary><Alt>j
+  split_vert = <Primary><Alt>l
   close_term = <Primary><Shift>F4
   copy = <Primary>c
   paste = <Primary>v
