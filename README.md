@@ -311,7 +311,7 @@ chmod +x install.sh
 		<tr>
 			<td align="center"><strong>1.4</strong></td>
 			<td align="center"><kbd>Super + E</kbd></td>
-			<td align="center">Files manager</td>
+			<td align="center">Files manager(Removed)</td>
 		</tr>
 	</tbody>
 </table>
@@ -367,7 +367,7 @@ chmod +x install.sh
 	check it out or make changes, open a terminal window and paste the commands below into it.</p>
 <p id="kvim"></p>
 <pre><code>
-        nvim ~/.config/nvim/settings/keybinds.vim
+        nvim -c 'Telescope keymaps'
         </code></pre>
 <h3 id="4final">4.Final</h3>
 <h4 align="center">Thanks for visiting my repository</h4>
