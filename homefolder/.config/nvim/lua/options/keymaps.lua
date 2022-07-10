@@ -18,6 +18,11 @@ M.general = {
     map("i", "<left>", "<nop>"), -- disable left arrow
     map("i", "<right>", "<nop>"), -- disable right arrow
   },
+
+  -- save
+  map("", "<C-s>", ":w<CR>", opts),
+  map("i", "<C-s>", "<ESC>:w<CR>a", opts),
+
   -- clear highlights
   map("i", "<ESC>", "<ESC><cmd>nohlsearch<CR>", opts), -- clear highlights in search -- for insert mode
   map("", "<ESC>", "<ESC><cmd>nohlsearch<CR>", opts), -- clear highlights
@@ -63,16 +68,19 @@ M.general = {
   map("", "<C-f>", "/"),
 
   -- v mode
--- Stay in indent mode
+  -- Stay in indent mode
   map("v", "<", "<gv", opts),
   map("v", ">", ">gv", opts),
 }
 M.plugins = {
+  -- Copilot plugin
+  map("", "<leader>c", "<cmd>Copilot<CR>", opts),
+
   -- NvimTree
   map("i", "<C-b>", "<ESC>:NvimTreeToggle<CR>", opts),
   map("", "<C-b>", ":NvimTreeToggle<CR>", opts),
 
--- Telescope
+  -- Telescope
   map("i", "<F1>", ":Telescope find_files<CR>", opts),
   map("", "<F1>", ":Telescope find_files<CR>", opts),
   map("i", "<F13>", ":Telescope live_grep<CR>", opts),
@@ -93,12 +101,23 @@ M.plugins = {
   map("i", "<C-w>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts),
   map("", "<C-w>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts),
   map("", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts),
-map("i", "<A-d>", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", opts),
+  map("i", "<A-d>", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", opts),
   map("", "<A-d>", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", opts),
   map("i", "<A-a>", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<CR>", opts),
   map("", "<A-a>", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<CR>", opts),
   map("i", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts),
   map("", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts),
   map("", "<leader>s", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts),
+
+  -- Troubleshooting
+  map("", "<C-t>", ":TroubleToggle<CR>", opts),
+  map("i", "<C-t>", "<cmd>TroubleToggle<CR>", opts),
+
+  -- Bracey
+  map("", "<F3>", "<cmd>Bracey<CR>", opts),
+  map("i", "<F3>", "<cmd>Bracey<CR>", opts),
+
+  map("", "<F5>", "<cmd>BraceyReload<CR>", opts),
+  map("i", "<F5>", "<cmd>BraceyReload<CR>", opts),
 }
 return M

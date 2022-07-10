@@ -20,7 +20,7 @@ local function border(hl_name)
 end
 
 local kind_icons = {
-  Compitlot = "",
+  Compilot = "",
   Namespace = "",
   Text = " ",
   Method = " ",
@@ -71,23 +71,19 @@ local options = {
     },
   },
   snippet = {
-    expand = function(args) -- expand snippet with arguments (args is a table) 
-      require("luasnip").lsp_expand(args.body) -- expand snippet with lsp_expand function 
+    expand = function(args) -- expand snippet with arguments (args is a table)
+      require("luasnip").lsp_expand(args.body) -- expand snippet with lsp_expand function
     end,
   },
   formatting = {
     format = function(_, vim_item)
       vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- add kind icon to vim item
-      return vim_item
+        return vim_item
     end,
   },
   mapping = {
-    ["<C-h>"] = cmp.mapping.select_prev_item(),
-    ["<C-l>"] = cmp.mapping.select_next_item(),
-    ["<C-j>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-k>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-s>"] = cmp.mapping.close(),
+    ["<C-g>"] = cmp.mapping.complete(),
+    ["<C-p>"] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
@@ -100,10 +96,10 @@ local options = {
       else
         fallback()
       end
-    end, {
+      end, {
         "i",
         "s",
-      }),
+    }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -112,16 +108,14 @@ local options = {
       else
         fallback()
       end
-    end, {
+      end, {
         "i",
         "s",
-      }),
+    }),
   },
   sources = {
-    { name = "copilot", group_index = 2 }, -- group index 2 is for copilot
-    { name = "lsp", group_index = 1 }, -- group index 1 is for lsp
-    { name = "vscode", group_index = 1 }, -- group index 1 is for vscode
-
+    { name = "lsp" }, -- use lsp source
+    { name = "vscode" }, -- use vscode source
     { name = "luasnip" }, -- luasnip is the default source
     { name = "nvim_lsp" }, -- nvim_lsp is the default source
     { name = "buffer" }, -- buffer is the default source
@@ -129,5 +123,4 @@ local options = {
     { name = "path" },
   },
 }
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
 cmp.setup(options)

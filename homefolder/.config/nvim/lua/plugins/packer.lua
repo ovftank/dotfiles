@@ -51,42 +51,40 @@ packer.startup(function(use)
   use("kyazdani42/nvim-web-devicons") -- show icons for web languages in the gutter (html, css, js, etc)
   use("RRethy/vim-illuminate") -- highlight matching parens and current line in vim and tmux
 
-  -- code completion and navigation tools
-  use("github/copilot.vim") -- copilot plugin
+  -- code completion and tools for vim
+  use("github/copilot.vim") -- copilot (code completion)
+  use("folke/trouble.nvim") -- troubleshoot
+  use({ "turbio/bracey.vim", run = "npm install --prefix server" }) -- live edit html, css, and javascript
 
-    -- cmp
-    use("hrsh7th/nvim-cmp") -- cmp plugin
-    use("hrsh7th/cmp-buffer") -- show buffer name and line number in the completion popup
-    use("hrsh7th/cmp-cmdline") -- show cmdline
-    use("hrsh7th/cmp-nvim-lsp") -- lsp completion (works with lsp-mode)
-    use("hrsh7th/cmp-path") -- show path in the cmdline (e.g. /home/user/project/file.lua:1)
-    use("saadparwaiz1/cmp_luasnip") -- luasnip cmp
-    use({
-      "zbirenbaum/copilot-cmp",
-      module = "copilot_cmp",
-    }) -- use copilot_cmp instead of copilot/copilot-cmp
+  -- cmp
+  use("hrsh7th/nvim-cmp") -- cmp plugin
+  use("hrsh7th/cmp-buffer") -- show buffer name and line number in the completion popup
+  use("hrsh7th/cmp-cmdline") -- show cmdline
+  use("hrsh7th/cmp-nvim-lsp") -- lsp completion (works with lsp-mode)
+  use("hrsh7th/cmp-path") -- show path in the cmdline (e.g. /home/user/project/file.lua:1)
+  use("saadparwaiz1/cmp_luasnip") -- luasnip cmp
 
-    -- lsp
-    use("jose-elias-alvarez/null-ls.nvim") -- lsp server for lua and javascript language server
-    use("neovim/nvim-lspconfig") -- lsp config
-    use("williamboman/nvim-lsp-installer") -- install lsp
-    -- snip
-    use("rafamadriz/friendly-snippets") -- snippet
-    use("L3MON4D3/LuaSnip") -- lua snippets
+  -- lsp
+  use("jose-elias-alvarez/null-ls.nvim") -- lsp server for lua and javascript language server
+  use("neovim/nvim-lspconfig") -- lsp config
+  use("williamboman/nvim-lsp-installer") -- install lsp
+  -- snip
+  use("rafamadriz/friendly-snippets") -- snippet
+  use("L3MON4D3/LuaSnip") -- lua snippets
 
-    -- autopairs,comment,and format tools for code
-    use("windwp/nvim-autopairs") -- auto pair for lua and html tags and etc. (like <,>,{,},[,],(,),) etc.)
-    use({
-      "numToStr/Comment.nvim",
-      config = function()
-        require("Comment").setup()
-      end,
-    }) -- comment
-    use("wesleimp/stylua.nvim") -- syntax for lua script file
+  -- autopairs,comment,and format tools for code
+  use("windwp/nvim-autopairs") -- auto pair for lua and html tags and etc. (like <,>,{,},[,],(,),) etc.)
+  use({
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end,
+  }) -- comment
+  use("wesleimp/stylua.nvim") -- syntax for lua script file
 
-    -- text editor tools and utilities (not lsp)
-    use("nvim-treesitter/nvim-treesitter") -- syntax tree plugin
-    use("JoosepAlviste/nvim-ts-context-commentstring") -- comment string for ts context menu plugin
+  -- text editor tools and utilities (not lsp)
+  use("nvim-treesitter/nvim-treesitter") -- syntax tree plugin
+  use("JoosepAlviste/nvim-ts-context-commentstring") -- comment string for ts context menu plugin
 
   -- telescope
   use("nvim-lua/plenary.nvim") -- plenary plugin for vim
