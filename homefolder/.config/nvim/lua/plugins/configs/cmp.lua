@@ -20,7 +20,6 @@ local function border(hl_name)
 end
 
 local kind_icons = {
-  Compilot = "",
   Namespace = "",
   Text = " ",
   Method = " ",
@@ -78,7 +77,10 @@ local options = {
   formatting = {
     format = function(_, vim_item)
       vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- add kind icon to vim item
-        return vim_item
+      if _.source.name == "copilot" then
+        vim_item.kind = " Copilot"
+      end
+      return vim_item
     end,
   },
   mapping = {
@@ -114,13 +116,15 @@ local options = {
     }),
   },
   sources = {
-    { name = "lsp" }, -- use lsp source
-    { name = "vscode" }, -- use vscode source
+    { name = "copilot" }, -- source for copilot
+    { name = "cmdline" }, -- command line
     { name = "luasnip" }, -- luasnip is the default source
-    { name = "nvim_lsp" }, -- nvim_lsp is the default source
     { name = "buffer" }, -- buffer is the default source
-    { name = "nvim_lua" },
     { name = "path" },
   },
 }
-cmp.setup(options)
+vim.api.nvim_set_hl(0, "CmpBorder", {
+  foreground = "#BD93F9",
+  background = "#282a36",
+}) -- completion window border color (same as documentation window border color)
+cmp.setup(options) -- setup completion with options

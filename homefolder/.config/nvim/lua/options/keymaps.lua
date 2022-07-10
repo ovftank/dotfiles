@@ -73,6 +73,20 @@ M.general = {
   map("v", ">", ">gv", opts),
 }
 M.plugins = {
+  -- Bar bar
+  -- Move to previous/next
+  map("", "<A-,>", "<cmd>BufferPrevious<CR>", opts),
+  map("", "<A-.>", "<cmd>BufferNext<CR>", opts),
+
+  -- Close buffer
+  map("n", "<A-c>", "<Cmd>BufferClose<CR>", opts),
+
+  -- Sort automatically by...
+  map("n", "bb", "<Cmd>BufferOrderByBufferNumber<CR>", opts),
+  map("n", "bd", "<Cmd>BufferOrderByDirectory<CR>", opts),
+  map("n", "bl", "<Cmd>BufferOrderByLanguage<CR>", opts),
+  map("n", "bw", "<Cmd>BufferOrderByWindowNumber<CR>", opts),
+
   -- Copilot plugin
   map("", "<leader>c", "<cmd>Copilot<CR>", opts),
 
@@ -81,9 +95,9 @@ M.plugins = {
   map("", "<C-b>", ":NvimTreeToggle<CR>", opts),
 
   -- Telescope
-  map("i", "<F1>", ":Telescope find_files<CR>", opts),
+  map("i", "<F1>", "<cmd>Telescope find_files<CR>", opts),
   map("", "<F1>", ":Telescope find_files<CR>", opts),
-  map("i", "<F13>", ":Telescope live_grep<CR>", opts),
+  map("i", "<F13>", "<cmd>Telescope live_grep<CR>", opts),
   map("", "<F13>", ":Telescope live_grep<CR>", opts),
 
   -- Comment
@@ -96,10 +110,8 @@ M.plugins = {
   map("", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts),
   map("n", "<leader>i", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts),
   map("", "<leader>r", "<cmd>lua vim.lsp.buf.references()<CR>", opts),
-  map("", "<A-s>", "<cmd>lua vim.diagnostic.open_float()<CR>", opts),
-  map("", "<A-s>", "<cmd>lua vim.diagnostic.open_float()<CR>", opts),
-  map("i", "<C-w>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts),
-  map("", "<C-w>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts),
+  map("i", "<C-o>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts),
+  map("", "<C-o>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts),
   map("", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts),
   map("i", "<A-d>", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", opts),
   map("", "<A-d>", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", opts),
@@ -108,10 +120,6 @@ M.plugins = {
   map("i", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts),
   map("", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts),
   map("", "<leader>s", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts),
-
-  -- Troubleshooting
-  map("", "<C-t>", ":TroubleToggle<CR>", opts),
-  map("i", "<C-t>", "<cmd>TroubleToggle<CR>", opts),
 
   -- Bracey
   map("", "<F3>", "<cmd>Bracey<CR>", opts),

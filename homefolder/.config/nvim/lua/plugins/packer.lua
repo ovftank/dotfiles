@@ -52,8 +52,8 @@ packer.startup(function(use)
   use("RRethy/vim-illuminate") -- highlight matching parens and current line in vim and tmux
 
   -- code completion and tools for vim
-  use("github/copilot.vim") -- copilot (code completion)
-  use("folke/trouble.nvim") -- troubleshoot
+  use("github/copilot.vim") -- copilot
+  use("hrsh7th/cmp-copilot") -- copilot (code completion)
   use({ "turbio/bracey.vim", run = "npm install --prefix server" }) -- live edit html, css, and javascript
 
   -- cmp
@@ -79,7 +79,7 @@ packer.startup(function(use)
     config = function()
       require("Comment").setup()
     end,
-  }) -- comment
+        }) -- comment plugin
   use("wesleimp/stylua.nvim") -- syntax for lua script file
 
   -- text editor tools and utilities (not lsp)
