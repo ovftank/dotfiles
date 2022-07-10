@@ -8,6 +8,9 @@ end
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+M.capabilities.fomatting = {
+  rangeLimit = false,
+}
 
 M.setup = function()
   local signs = {
@@ -45,10 +48,6 @@ M.setup = function()
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
   })
-
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = "rounded",
-  })
 end
 
 M.on_attach = function(client)
@@ -60,6 +59,8 @@ M.on_attach = function(client)
     client.resolved_capabilities.document_formatting = false
   end
 
+  -- illuminate the current line
+  vim.api.nvim_command("highlight default link CursorLine SignColumn")
   local status_ok, illuminate = pcall(require, "illuminate")
   if not status_ok then
     return

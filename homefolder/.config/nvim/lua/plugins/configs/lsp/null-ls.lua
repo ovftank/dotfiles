@@ -1,27 +1,50 @@
-local null_ls_ok, null_ls = pcall(require, "null-ls")
-if not null_ls_ok then
+local present, null_ls = pcall(require, "null-ls")
+
+if not present then
   return
 end
 
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-local formatting = null_ls.builtins.formatting
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-local diagnostics = null_ls.builtins.diagnostics
+local b = null_ls.builtins
 
--- https://github.com/prettier-solidity/prettier-plugin-solidity
-null_ls.setup {
-  debug = false,
-  sources = {
-    formatting.prettier.with {
-      extra_filetypes = { "toml" },
-      extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-    },
-    formatting.black.with { extra_args = { "--fast" } },
-    formatting.stylua,
-    formatting.google_java_format,
-    diagnostics.flake8,
-            require("null-ls").builtins.formatting.stylua,
-        require("null-ls").builtins.diagnostics.eslint,
-        require("null-ls").builtins.completion.spell,
-  },
+local sources = {
+
+  -- webdev stuff
+  b.formatting.deno_fmt,
+  b.formatting.prettier.with({
+    filetypes = { "html", "json", "yaml", "markdown" },
+  }),
+  b.diagnostics.write_good,
+  b.code_actions.gitsigns.with({
+    filetypes = { "yaml" },
+  }),
+
+  -- eslint stuff
+  b.formatting.eslint.with({
+    filetypes = { "js", "jsx", "ts", "tsx" },
+    formatter = "codeframe",
+  }),
+
+  -- CPP
+  b.formatting.clang_format.with({
+    filetypes = { "c", "cpp", "h" },
+  }),
+  b.diagnostics.cppcheck.with({
+    filetypes = { "c", "cpp", "h" },
+  }),
+
+  -- Lua
+  b.formatting.stylua.with({
+    filetypes = { "lua" },
+  }),
+
+  -- Shell
+  b.formatting.shfmt.with({
+    extra_args = { "-i", "2", "-ci" },
+  }),
+  b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 }
+
+null_ls.setup({
+  debug = true,
+  sources = sources,
+})
