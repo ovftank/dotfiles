@@ -87,9 +87,9 @@ M.plugins = {
   map("", "<F13>", ":Telescope live_grep<CR>", opts),
 
   -- Comment
-  map("i", "<C-o>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts),
-  map("", "<C-o>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts),
-  map("x", "<C-o>", "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>"),
+  map("i", "<C-_>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts),
+  map("", "<C-_>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts),
+  map("x", "<C-_>", "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>"),
 
   -- LSP
   map("", "<leader>d", "<cmd>lua vim.lsp.buf.definition()<CR>", opts),
