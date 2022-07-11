@@ -1,60 +1,62 @@
--- using a variable, shorten options
-local g = vim.g
-local opt = vim.opt
+local g = vim.g -- vim global variable
+local opt = vim.opt -- vim option variable
 
--- general configuration
-g.did_load_filetypes = 0 -- disable load filetype.vim on startup (for performance) (default: 1)
-g.do_filetype_lua = 1 -- enable load filetype.lua
-opt.backup = false -- disable autobackup in nvim (default: true)
-opt.clipboard = "unnamed,unnamedplus" -- sync the clipboard between nvim and system clipboard (default: "unnamed")
-opt.completeopt = { "menuone", "noselect" } -- disable automatic selection in autocomplete
-opt.cul = true -- displays a cursor line 
-opt.expandtab = true -- spaces instead of tabs 
-opt.fileencoding = "utf-8" -- set file encoding as: utf-8 
-opt.fillchars.eob = " " -- convert the character at the end of the buffer to a space 
-opt.guifont = "monospace:h17" -- set nvim's font to monospace
-opt.hlsearch = true -- highlight the search option
-opt.ignorecase = false -- is case sensitive
-opt.mouse = "a" -- make the mouse usable
-opt.number = true -- at the start of each line, display number
-opt.numberwidth = 2 -- gap between the numbers and the margin
-opt.pumheight = 10 -- set a height for the complete menu
-opt.shiftwidth = 2 -- length of one tab
-opt.shortmess:append("c") -- don't give ins-completion-menu messages
-opt.showcmd = false -- in the final line of the screen, disable the show (partial) command
-opt.showmode = false -- disable show mode (normal,insert,visual)
-opt.signcolumn = "yes" -- remove the sign column
-opt.smartcase = true -- smartcase search
-opt.smartindent = true -- automatic indentation based on syntax
+-- general config --
+g.do_filetype_lua = true -- enable lua filetype detection
+
+opt.backup = false -- disable backup files
+opt.clipboard = "unnamedplus" -- allow neovim to use system clipboard
+opt.completeopt = "menuone,noinsert,noselect" -- set completion options
+opt.cursorline = true -- highlight current line
+opt.expandtab = true -- expand tabs to spaces
+opt.fileencoding = "utf-8" -- set file encoding to utf-8
+opt.fillchars.eol = " " -- set end of line character to space
+opt.guifont = "monospace:h20" -- set font for gui (default: Monospace:h14)
+opt.hidden = true -- hide hidden files in file explorer
+opt.ignorecase = true -- ignore case in file explorer
+opt.mouse = "a" -- enable mouse support
+opt.number = true -- show line numbers
+opt.numberwidth = 2 -- set line number width to 4 characters
+opt.scrolloff = 8 -- set scroll offset to 8 characters
+opt.shiftwidth = 2 -- set shiftwidth to 2 characters
+opt.shortmess:append "c" -- disable status line messages
+opt.shortmess:append "I" -- disable incremental
+opt.showmode = false -- disable show mode in status bar
+opt.showtabline = 1 -- show tabline in status bar
+opt.sidescrolloff = 8 -- set sidescroll offset to 8 characters
+opt.signcolumn = "yes"
+opt.smartcase = true -- ignore case in file explorer when searching for files and directories
+opt.smartindent = true -- enable smart indentation
 opt.swapfile = false -- disable swap file
-opt.termguicolors = true -- using terminal colors as a background
-opt.title = true -- displaying the file's title
-opt.undofile = true -- infinite undo
-opt.updatetime = 250 -- show complete menu faster
-opt.writebackup = false -- do not write backup
+opt.tabstop = 2 -- set tabstop to 2 characters
+opt.timeoutlen = 100 -- set timeout length to 100 milliseconds
+opt.title = true -- show title in status bar
+opt.undofile = true -- enable undo file support
+opt.updatetime = 250 -- set update time to 250 milliseconds
+opt.whichwrap = "h,l,<,>,[,]" -- set cursor movement wrap around lines
+opt.writebackup = false -- disable write backup files to disk on exit
 
--- do not automatically comment on new lines.
+-- disable auto comment on new line
 vim.api.nvim_create_autocmd("BufEnter", {
-        pattern = "*",
-        command = "set fo-=c fo-=r fo-=o",
+	pattern = "*",
+	command = "set fo-=c fo-=r fo-=o",
 })
 
--- highlight copy text
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-        callback = function()
-                vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
-        end,
-})
-
--- use 'q' to quit from common plugins
+-- ESC quit from common plugins
 vim.api.nvim_create_autocmd({ "FileType" }, {
         pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir" },
         callback = function()
                 vim.cmd([[
-      nnoremap <silent> <buffer> q :close<CR> 
+      nnoremap <silent> <buffer> <ESC> :close<CR> 
       set nobuflisted 
     ]])
         end,
 })
 
-vim.cmd([[colorscheme dracula]]) -- set the color scheme to "Dracula."
+-- set color scheme to Dracula
+local ok, _ = pcall(require, "dracula")
+if not ok then
+	return
+end
+
+vim.cmd([[colorscheme dracula]])
