@@ -19,8 +19,16 @@ export LANG=en_US.UTF-8
 #keybind
 bindkey "^q" beginning-of-line
 bindkey "^e" end-of-line
+
+bindkey "^[j" down-line-or-history
+bindkey "^[k" up-line-or-history 
 bindkey "^[h" backward-char
 bindkey "^[l" forward-char
+
+bindkey "^[OA" neg-argument
+bindkey "^[OB" neg-argument
+bindkey "^[OC" neg-argument
+bindkey "^[OD" neg-argument
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main cursor)
 typeset -gA ZSH_HIGHLIGHT_STYLES
