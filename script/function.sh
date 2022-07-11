@@ -30,7 +30,7 @@ packageIstall(){
 	if [[ "$RETURN" == "Linux-GNU OS discovered: Arch Linux" ]]; then
 		aur
 		sudo pacman -Syyu i3-gaps i3blocks noto-fonts terminator zsh ripgrep bat neofetch pulseaudio dmenu feh maim xclip python3 python-pip stylua --noconfirm
-		yay -S google-chrome ibus-bamboo nerd-fonts-source-code-pro pulseaudio-ctl --noconfirm
+		yay -S google-chrome ibus-bamboo nerd-fonts-space-mono pulseaudio-ctl --noconfirm
 		clear
 	elif [[ "$RETURN" == "GNU/Linux has been detected" ]]; then
 		sudo apt update&&sudo apt upgrade
