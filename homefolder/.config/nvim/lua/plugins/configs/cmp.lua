@@ -104,8 +104,6 @@ local options = {
 				cmp.select_next_item()
 			elseif require("luasnip").expand_or_jumpable() then
 				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-			elseif vim.fn["copilot#Accept"]() ~= "" then
-				vim.api.nvim_feedkeys(vim.fn["copilot#Accept"](), "i", true)
 			else
 				fallback()
 			end

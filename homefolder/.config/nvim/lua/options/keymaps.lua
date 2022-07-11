@@ -60,9 +60,6 @@ M.general = {
 		map("", "<A-q>", "<C-b>", opts), -- move to previous page in normal mode
 		map("", "<A-e>", "<C-f>", opts), -- move to next page in normal mode
 
-		map("i", "<A-q>", "<C-b>", opts), -- move to previous page in insert mode
-		map("i", "<A-e>", "<C-f>", opts), -- move to next page in insert mode
-
 		map("", "<C-k>", "3<C-y>", opts), -- scoll up in normal mode
 		map("", "<C-j>", "3<C-e>", opts), -- scroll down in normal mode
 
@@ -132,8 +129,8 @@ M.plugins = {
 		map("", "<A-p>", "<CMD>Copilot<CR>", opts), -- open copilot
 		map("i", "<A-p>", "<CMD>Copilot<CR>", opts), -- open copilot in insert mode
 
-		map("i", "<A-z>", "<Plug>(copilot-previous)", opts), -- previous completion
-		map("i", "<A-x>", "<Plug>(copilot-next)", opts), -- next completion
+		map("i", "<A-q>", "<Plug>(copilot-previous)", opts), -- previous completion
+		map("i", "<A-e>", "<Plug>(copilot-next)", opts), -- next completion
 	},
 
 	lsp = { -- code linting and code analysis (lsp)
