@@ -85,12 +85,22 @@ local options = {
 	},
 	mapping = {
 		["<C-g>"] = cmp.mapping.complete(),
-		["<A-g>"] = cmp.mapping.close(),
-		["<CR>"] = cmp.mapping.confirm({
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = false,
-		}),
-		["<C-p>"] = cmp.mapping(function(copilot)
+		["<A-g>"] = cmp.mapping(function()
+			cmp.close()
+			cmp.abort()
+		end),
+		-- ["<CR>"] = cmp.mapping.confirm({
+		-- 	behavior = cmp.ConfirmBehavior.Replace,
+		-- 	select = false,
+		-- }),
+		["<CR>"] = cmp.mapping(function(confirm_selection)
+			if cmp.visible() then
+				cmp.confirm()
+			else
+				confirm_selection() -- If you use vim-enhdwise, this fallback will behave the same as vim-endwise.
+			end
+		end),
+		["<C-t>"] = cmp.mapping(function(copilot)
 			cmp.mapping.abort()
 			local copilot_keys = vim.fn["copilot#Accept"]()
 			if copilot_keys ~= "" then
@@ -149,4 +159,24 @@ vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", {
 	foreground = "#f8f8f2",
 	background = "#282a36",
 }) -- completion item coloration (selected)
-cmp.setup(options) -- setup completion with options
+
+cmp.setup(options) -- setup completion with option
+
+-- `/` cmdline setup.
+cmp.setup.cmdline("/", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = "buffer" },
+	},
+})
+
+-- `:` cmdline setup.
+cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = cmp.config.sources({
+		{ name = "path" },
+	}, {
+		{ name = "cmdline" },
+		{ name = "copilot" },
+	}),
+})
