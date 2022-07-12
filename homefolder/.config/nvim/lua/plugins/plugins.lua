@@ -85,7 +85,7 @@ packer.startup(function(use)
 		use("kyazdani42/nvim-tree.lua"), -- file tree
     use("windwp/nvim-ts-autotag"), -- auto tag for ts
 		use("wbthomason/packer.nvim"), -- packer main plugin
-		use("wakatime/vim-wakatime"), -- wakatime tracking
+		-- use("wakatime/vim-wakatime"), -- wakatime tracking
 	}
 	if PACKER_CLONE then
 		require("packer").sync()
