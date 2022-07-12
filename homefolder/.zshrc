@@ -30,6 +30,26 @@ bindkey "^[OB" neg-argument
 bindkey "^[OC" neg-argument
 bindkey "^[OD" neg-argument
 
+bindkey "^a" neg-argument
+bindkey "^b" neg-argument
+bindkey "^d" neg-argument
+bindkey "^f" neg-argument
+bindkey "^g" neg-argument
+bindkey "^h" neg-argument
+bindkey "^i" neg-argument
+bindkey "^j" neg-argument
+bindkey "^k" neg-argument
+bindkey "^m" neg-argument
+bindkey "^n" neg-argument
+bindkey "^p" neg-argument
+bindkey "^r" neg-argument
+bindkey "^s" neg-argument
+bindkey "^t" neg-argument
+bindkey "^v" neg-argument
+bindkey "^w" neg-argument
+bindkey "^x" neg-argument
+bindkey "^y" neg-argument
+
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main cursor)
 typeset -gA ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[comment]='fg=#6272A4'
