@@ -33,6 +33,7 @@ package_install() {
 
     package_uninstall() {
       sudo pacman -Rsucn cmake gc go gcc gzip yay --noconfirm
+      sudo pacman -S base
     }
     # uninstall the packages that are not needed anymore
     package_uninstall
