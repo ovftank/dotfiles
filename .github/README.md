@@ -16,7 +16,7 @@
 ##### 👇 - Copy the following lines to the clipboard and paste them into your terminal - 👇
 
 ```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/tgbiztank/dotfiles/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/tgbiztank/dotfiles/main/install.sh)"
 ```
 
 ### 2.Information
