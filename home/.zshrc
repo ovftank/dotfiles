@@ -102,7 +102,11 @@ if [ "$TERM" = "linux" ]; then
 	printf %b '\e]PFffffff'    # redefine 'bright-white'   as '#ffffff'
 	clear
 fi
-
+#Some alias...
+alias fb="i3-msg exec xdg-open https://www.facebook.com >> /dev/null"
+alias gg="i3-msg exec sh ~/.config/i3/script/gg.sh >> /dev/null"
+alias gh="i3-msg exec sh ~/.config/i3/script/gh.sh >> /dev/null"
+alias jav="i3-msg exec 'google-chrome-stable -incognito javhd.onl'&&i3-msg kill"
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
