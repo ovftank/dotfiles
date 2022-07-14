@@ -11,7 +11,6 @@ separator_block_width=15
 markup=pango
 
 [wifi]
-#full_text="$(/usr/bin/users)"
 command=nmcli dev wifi | grep $(nmcli dev status |  awk 'FNR==2{print $4}') | awk '{ sub(/*/, "▂") ; sub(/*/, "▂") ; sub(/*/, "▄") ; sub(/*/, "▆") ; sub(/*/, "█") ; printf "%s<span color=\"#bd93f9\"> %s</span>\n", $3, $9}'
 interval=1
 label=<span color="#bd93f9"> </span>
@@ -31,7 +30,7 @@ border_top=1
 border_right=0
 border_bottom=0
 border_left=0
-min_width=210
+min_width=214
 
 [root]
 command=df -h / | awk 'FNR==2 { gsub(/[A-Za-z]/, ""); printf "%i<span color=\"#bd93f9\">GiB</span>\n", $4 }'
@@ -45,9 +44,9 @@ border_left=0
 min_width=119
 
 [volume]
-command=pulseaudio-ctl full-status | awk '{ printf "%i<span color=\"#bd93f9\">%</span>\n", $1 }'
+# command=pulseaudio-ctl full-status | awk '{ printf "%i<span color=\"#bd93f9\">%</span>\n", $1 }'
+command=sh ./status/audio.sh | awk '{ printf "<span color=\"#bd93f9\"> %s</span> %s<span color=\"#bd93f9\">%</span>\n", $1, $2 }'
 interval=1
-label=<span color="#bd93f9"> </span>
 border=#bd93f9
 border_top=1
 border_right=0
@@ -67,7 +66,7 @@ border_left=0
 min_width=119
 
 [date]
-command=LC_ALL="vi_VN.UTF-8" date '+%A-%d/%m/%Y'
+command=LC_ALL="vi_VN.UTF-8" date '+%A-%d/%m'
 interval=60
 label=<span color="#bd93f9"> </span>
 border=#bd93f9
@@ -75,7 +74,7 @@ border_top=1
 border_right=0
 border_bottom=0
 border_left=0
-min_width=210
+min_width=214
 
 [right]
 # full_text="tgbiztank"
