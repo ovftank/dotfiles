@@ -79,7 +79,6 @@ packer.startup(function(use)
 				require("Comment").setup()
 			end,
 		}), -- comment plugin
-		use("wesleimp/stylua.nvim"), -- stylua syntax highlighting
 		use("nvim-lua/plenary.nvim"), -- plenary plugin
 		use("nvim-telescope/telescope.nvim"), -- telescope
 		use("kyazdani42/nvim-tree.lua"), -- file tree
