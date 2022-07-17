@@ -31,6 +31,11 @@ M.general = {
     map("i", "<down>", "<nop>"), -- disable down arrow
     map("i", "<left>", "<nop>"), -- disable left arrow
     map("i", "<right>", "<nop>"), -- disable right arrow
+
+    map("c", "<up>", "<nop>"), -- disable up arrow
+    map("c", "<down>", "<nop>"), -- disable down arrow
+    map("c", "<left>", "<nop>"), -- disable left arrow
+    map("c", "<right>", "<nop>"), -- disable right arrow
   },
   find = {
     map("", "<C-f>", "/"), -- find
@@ -46,6 +51,10 @@ M.general = {
     map("i", "<A-j>", "<Down>", opts), -- move down in insert mode
     map("i", "<A-h>", "<Left>", opts), -- move left in insert mode
     map("i", "<A-l>", "<Right>", opts), -- move right in insert mode
+    map("c", "A-k", "<Up>"), -- move up in command mode
+    map("c", "A-j", "<Down>"), -- move down in command mode
+    map("c", "A-h", "<Left>"), -- move left in command mode
+    map("c", "A-l", "<Right>"), -- move right in command mode
     map("", "<C-q>", "^", opts), -- move to start of line in normal mode
     map("", "<C-e>", "$", opts), -- move to end of line in normal mode
     map("i", "<C-q>", "<ESC>^i", opts), -- move to start of line in insert mode
