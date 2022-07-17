@@ -85,7 +85,7 @@ local options = {
 	},
 	mapping = {
 		["<C-g>"] = cmp.mapping.complete(),
-		["<A-g>"] = cmp.mapping(function()
+		["<C-t>"] = cmp.mapping(function()
 			cmp.close()
 			cmp.abort()
 		end),
@@ -97,7 +97,7 @@ local options = {
 				confirm_selection()
 			end
 		end),
-		["<C-t>"] = cmp.mapping(function(copilot)
+		["<C-p>"] = cmp.mapping(function(copilot)
 			cmp.mapping.abort()
 			local copilot_keys = vim.fn["copilot#Accept"]()
 			if copilot_keys ~= "" then
