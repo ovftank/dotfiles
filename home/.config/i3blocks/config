@@ -11,7 +11,7 @@ separator_block_width=15
 markup=pango
 
 [wifi]
-command=nmcli dev wifi | grep $(nmcli dev status |  awk 'FNR==2{print $4}') | awk '{ sub(/*/, "▂") ; sub(/*/, "▂") ; sub(/*/, "▄") ; sub(/*/, "▆") ; sub(/*/, "█") ; printf "%s<span color=\"#bd93f9\"> %s</span>\n", $3, $9}'
+command=nmcli dev wifi | grep $(nmcli dev status | awk 'FNR==2{print $4}') | awk '{ sub(/*/, "▂") ; sub(/*/, "▂") ; sub(/*/, "▄") ; sub(/*/, "▆") ; sub(/*/, "█") ; printf "%s<span color=\"#bd93f9\"> %s</span>\n", $3, $9}'
 interval=1
 label=<span color="#bd93f9"> </span>
 border=#bd93f9
@@ -19,7 +19,7 @@ border_top=1
 border_right=0
 border_bottom=0
 border_left=0
-min_width=510
+min_width=226
 
 [home]
 command=df -h /home | awk 'FNR==2 { gsub(/[A-Za-z]/, ""); printf "%i<span color=\"#bd93f9\">GiB</span>\n", $4 }'
@@ -30,7 +30,7 @@ border_top=1
 border_right=0
 border_bottom=0
 border_left=0
-min_width=214
+min_width=222
 
 [root]
 command=df -h / | awk 'FNR==2 { gsub(/[A-Za-z]/, ""); printf "%i<span color=\"#bd93f9\">GiB</span>\n", $4 }'
@@ -41,7 +41,7 @@ border_top=1
 border_right=0
 border_bottom=0
 border_left=0
-min_width=119
+min_width=100
 
 [volume]
 # command=pulseaudio-ctl full-status | awk '{ printf "%i<span color=\"#bd93f9\">%</span>\n", $1 }'
@@ -63,7 +63,7 @@ border_top=1
 border_right=0
 border_bottom=0
 border_left=0
-min_width=119
+min_width=120
 
 [date]
 command=LC_ALL="vi_VN.UTF-8" date '+%A-%d/%m'
@@ -74,7 +74,7 @@ border_top=1
 border_right=0
 border_bottom=0
 border_left=0
-min_width=214
+min_width=222
 
 [right]
 # full_text="tgbiztank"
@@ -86,4 +86,4 @@ border_top=1
 border_right=0
 border_bottom=0
 border_left=0
-min_width=510
+min_width=226

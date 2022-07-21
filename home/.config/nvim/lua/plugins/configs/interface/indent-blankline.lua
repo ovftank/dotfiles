@@ -46,8 +46,8 @@ indent_blankline.setup({
 })
 
 vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", {
-  foreground = "#bd93f9",
+	foreground = "#bd93f9",
 })
 vim.api.nvim_set_hl(0, "IndentBlanklineContextStart", {
-  foreground = "#bd93f9",
+	foreground = "#bd93f9",
 })

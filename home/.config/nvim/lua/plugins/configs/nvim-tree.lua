@@ -1,22 +1,10 @@
-local ok, nvim_tree = pcall(require, "nvim-tree")
-if not ok then
-  return
-end
-
-local config_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_ok then
-  return
-end
-
-local tree_cb = nvim_tree_config.nvim_tree_callback
-
-nvim_tree.setup({
+require ("nvim-tree").setup({
   update_focused_file = {
     enable = true,
     update_cwd = true,
   },
-  renderer = { -- Renderer configuration (optional) (defaults to `tree`)
-    root_folder_modifier = ":t", -- Modifier for root folder (defaults to `:`)
+  renderer = {
+    root_folder_modifier = ":t",
     icons = {
       glyphs = {
         default = "",
@@ -44,8 +32,8 @@ nvim_tree.setup({
     },
   },
   diagnostics = {
-    enable = true,      -- Enable diagnostics (defaults to `false`)
-    show_on_dirs = true, -- Show diagnostics on directories (defaults to `false`)
+    enable = true,
+    show_on_dirs = true,
     icons = {
       hint = "",
       info = "",
@@ -57,12 +45,5 @@ nvim_tree.setup({
     width = 30,
     height = 30,
     side = "left",
-    mappings = {
-      list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
-        { key = "h", cb = tree_cb("close_node") },
-        { key = "v", cb = tree_cb("vsplit") },
-      },
-    },
   },
 })

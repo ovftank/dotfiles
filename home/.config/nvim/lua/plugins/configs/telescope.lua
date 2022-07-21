@@ -2,7 +2,6 @@ local ok, telescope = pcall(require, "telescope")
 if not ok then
   return
 end
-
 local options = {
   defaults = {
     vimgrep_arguments = {
@@ -42,20 +41,17 @@ local options = {
     border = {},
     borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
     color_devicons = true,
-    set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+    set_env = { ["COLORTERM"] = "truecolor" },
     file_previewer = require("telescope.previewers").vim_buffer_cat.new,
     grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
     qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-    -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
     mappings = {
       n = { ["q"] = require("telescope.actions").close },
     },
   },
-
   extensions_list = { "themes", "terms" },
 }
--- load extensions
 pcall(function()
   for _, ext in ipairs(options.extensions_list) do
     telescope.load_extension(ext)

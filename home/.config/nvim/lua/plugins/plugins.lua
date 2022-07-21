@@ -1,5 +1,4 @@
 local fn = vim.fn
-
 -- packer clone:
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -13,7 +12,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	})
 	vim.cmd([[packadd packer.nvim]])
 end
-
 -- auto reload neovim when files change:
 vim.cmd([[
 augroup packer_user_config
@@ -21,13 +19,11 @@ autocmd!
 autocmd BufWritePost plugins.lua source <afile> | PackerSync
 augroup end
 ]])
-
 -- don't error out on first use
 local ok, packer = pcall(require, "packer")
 if not ok then
 	return
 end
-
 -- create a popup for packer to use:
 packer.init({
 	display = {
@@ -36,7 +32,6 @@ packer.init({
 		end, -- function to open popup window
 	},
 })
-
 local M = {}
 packer.startup(function(use)
 	M.userinterface = {
@@ -82,7 +77,7 @@ packer.startup(function(use)
 		use("nvim-lua/plenary.nvim"), -- plenary plugin
 		use("nvim-telescope/telescope.nvim"), -- telescope
 		use("kyazdani42/nvim-tree.lua"), -- file tree
-    use("windwp/nvim-ts-autotag"), -- auto tag for ts
+		use("windwp/nvim-ts-autotag"), -- auto tag for ts
 		use("wbthomason/packer.nvim"), -- packer main plugin
 		use("wakatime/vim-wakatime"), -- wakatime tracking
 	}
