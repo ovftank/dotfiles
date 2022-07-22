@@ -19,5 +19,6 @@ require("nvim-lsp-installer").setup({
 		},
 	},
 })
-require("plugins.configs.lsp.cmp")
-require("plugins.configs.lsp.null-ls")
+require("plugins.configs.code.lsp.null-ls")
+require("plugins.configs.code.lsp.lsp")
+require("plugins.configs.code.lsp.setup")

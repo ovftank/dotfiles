@@ -17,6 +17,7 @@ local function border(hl_name)
     { "│", hl_name },
   }
 end
+
 local kind_icons = {
   Copilot = "",
   Namespace = "",
@@ -56,25 +57,25 @@ local kind_icons = {
   Calendar = "",
   Watch = " ",
   Package = "",
-} 
+}
 local options = {
   window = {
     completion = {
-      border = border("CmpBorder"), 
-      winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None", 
+      border = border("CmpBorder"),
+      winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
     },
     documentation = {
-      border = border("CmpDocBorder"), 
+      border = border("CmpDocBorder"),
     },
   },
   snippet = {
-    expand = function(args) 
-      require("luasnip").lsp_expand(args.body) 
+    expand = function(args)
+      require("luasnip").lsp_expand(args.body)
     end,
   },
   formatting = {
     format = function(_, vim_item)
-      vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) 
+      vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
       if _.source.name == "copilot" then
         vim_item.kind = " Copilot"
       end
@@ -113,8 +114,8 @@ local options = {
         fallback()
       end
     end, {
-        "i",
-        "s",
+      "i",
+      "s",
     }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -125,35 +126,36 @@ local options = {
         fallback()
       end
     end, {
-        "i",
-        "s",
+      "i",
+      "s",
     }),
   },
   sources = {
-    { name = "copilot" }, 
-    { name = "cmdline" }, 
-    { name = "luasnip" }, 
-    { name = "buffer" }, 
+    { name = "copilot" },
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = "buffer" },
     { name = "path" },
+    { name = 'nvim_lua' },
   },
   experimental = {
-  ghost_text = false,
+    ghost_text = false,
     native_menu = false,
   },
 }
 vim.api.nvim_set_hl(0, "CmpBorder", {
   foreground = "#BD93F9",
   background = "#282a36",
-}) 
+})
 vim.api.nvim_set_hl(0, "CmpItemAbbr", {
   foreground = "#f8f8f2",
   background = "#282a36",
-}) 
+})
 vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", {
   foreground = "#f8f8f2",
   background = "#282a36",
-}) 
-cmp.setup(options) 
+})
+cmp.setup(options)
 cmp.setup.cmdline("/", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
@@ -164,8 +166,8 @@ cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
     { name = "path" },
-    }, {
-      { name = "cmdline" },
-      { name = "copilot" },
+  }, {
+    { name = "cmdline" },
+    { name = "copilot" },
   }),
 })

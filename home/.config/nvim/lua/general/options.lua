@@ -44,8 +44,18 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir" },
 	callback = function()
 		vim.cmd([[
-      nnoremap <silent> <buffer> <ESC> :close<CR> 
-      set nobuflisted 
+      nnoremap <silent> <buffer> <ESC> :close<CR>
+      set nobuflisted
+    ]])
+	end,
+})
+-- auto delete trailing space
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+	pattern = "*",
+	callback = function()
+		vim.cmd([[
+      nnoremap <silent> <buffer> <F8> :%s/\s\+$//<CR>$
+      inoremap <silent> <buffer> <F8> <ESC>:%s/\s\+$//<CR>$a
     ]])
 	end,
 })

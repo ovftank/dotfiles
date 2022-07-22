@@ -1,23 +1,24 @@
+-- general
+require ("general.options")
+require ("general.keymaps")
 -- plugins
--- require("plugins.packer")
-require("plugins.plugins")
--- optional
-require("options.general")
-require("options.keymaps")
--- config code
-require("plugins.configs.code.autopairs")
-require("plugins.configs.code.cmp")
-require("plugins.configs.code.comment")
-require("plugins.configs.code.copilot")
--- code.lsp
-require("plugins.configs.lsp")
+require ("plugins.plugins")
+-- configs plugins
+-- interface
+require ("plugins.configs.interface.barbar")
+require ("plugins.configs.interface.colorizer")
+require ("plugins.configs.interface.dracula")
+require ("plugins.configs.interface.indent-blanklines")
+require ("plugins.configs.interface.lualine")
+-- code
+require ("plugins.configs.code.autopairs")
+require ("plugins.configs.code.cmp")
+require ("plugins.configs.code.comment")
+require ("plugins.configs.code.copilot")
+require ("plugins.configs.code.lsp")
+-- keymaps
+require ("plugins.configs.keymaps")
 -- other
-require("plugins.configs.nvim-tree")
-require("plugins.configs.telescope")
-require("plugins.configs.treesitter")
--- configs interface plugins
-require("plugins.configs.interface.barbar")
-require("plugins.configs.interface.colorizer")
-require("plugins.configs.interface.dracula")
-require("plugins.configs.interface.indent-blankline")
-require("plugins.configs.interface.lualine")
+require ("plugins.configs.others.nvim-tree")
+require ("plugins.configs.others.telescope")
+require ("plugins.configs.others.treesitter")

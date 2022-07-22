@@ -1,14 +1,30 @@
 local M = {}
-local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_cmp_ok then
-  return
+local lsp_installer = require("nvim-lsp-installer")
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+local lspconfig = require("lspconfig")
+local servers = { 'html', 'diagnosticls', 'tailwindcss', 'bashls' }
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup({
+    capabilities = capabilities,
+  })
 end
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 M.capabilities.fomatting = {
   rangeLimit = false,
 }
+lsp_installer.setup {}
+lspconfig.util.default_config = vim.tbl_extend(
+  "force",
+  lspconfig.util.default_config,
+  {
+    on_attach = on_attach
+  }
+)
+for _, server in ipairs(lsp_installer.get_installed_servers()) do
+  lspconfig[server.name].setup {}
+end
 M.setup = function()
   local signs = {
     { name = "DiagnosticSignError", text = "" },
@@ -20,9 +36,9 @@ M.setup = function()
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
   end
   local config = {
-    virtual_text = false, 
+    virtual_text = false,
     signs = {
-      active = signs, 
+      active = signs,
     },
     update_in_insert = true,
     underline = true,
@@ -42,13 +58,6 @@ M.setup = function()
   })
 end
 M.on_attach = function(client)
-  if client.name == "tsserver" then
-    client.resolved_capabilities.document_formatting = false
-  end
-  if client.name == "sumneko_lua" then
-    client.resolved_capabilities.document_formatting = true
-  end
-
   vim.api.nvim_command("highlight default link CursorLine SignColumn")
   local status_ok, illuminate = pcall(require, "illuminate")
   if not status_ok then

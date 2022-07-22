@@ -1,8 +1,4 @@
-local ok, telescope = pcall(require, "telescope")
-if not ok then
-  return
-end
-local options = {
+require('telescope').setup {
   defaults = {
     vimgrep_arguments = {
       "rg",
@@ -47,13 +43,18 @@ local options = {
     qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
     mappings = {
-      n = { ["q"] = require("telescope.actions").close },
+      n = { ["<ESC>"] = require("telescope.actions").close },
+      i = {
+        ["<ESC>"] = require("telescope.actions").close,
+        ["<A-k>"] = require("telescope.actions").move_selection_previous,
+        ["<A-j>"] = require("telescope.actions").move_selection_next,
+      },
     },
   },
   extensions_list = { "themes", "terms" },
+  pcall(function()
+    for _, ext in ipairs(options.extensions_list) do
+      telescope.load_extension(ext)
+    end
+  end)
 }
-pcall(function()
-  for _, ext in ipairs(options.extensions_list) do
-    telescope.load_extension(ext)
-  end
-end)
