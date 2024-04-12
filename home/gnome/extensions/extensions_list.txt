@@ -1,0 +1,6 @@
+🔵 [1mApp Hider[0m ([33mapp-hider@lynith.dev[39m) v20 [32m/user[39m
+🔵 [1mBurn My Windows[0m ([33mburn-my-windows@schneegans.github.com[39m) v41 [32m/user[39m
+🔵 [1mClipboard Indicator[0m ([33mclipboard-indicator@tudmotu.com[39m) v62 [32m/user[39m
+🔵 [1mCompiz alike magic lamp effect[0m ([33mcompiz-alike-magic-lamp-effect@hermes83.github.com[39m) v19 [32m/user[39m
+🔵 [1mDash to Dock[0m ([33mdash-to-dock@micxgx.gmail.com[39m) v89 [32m/user[39m
+🔵 [1mUser Themes[0m ([33muser-theme@gnome-shell-extensions.gcampax.github.com[39m) v57 [32m/user[39m
