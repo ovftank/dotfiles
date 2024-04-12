@@ -60,9 +60,7 @@ I hope you enjoy it!
 
 ###### Super key is Windows/Command from your keyboard
 
-##### 1. Execute
-
-programm
+##### 1. Execut programm
 
 <table>
   <thead>
