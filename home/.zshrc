@@ -35,6 +35,6 @@ autoload -U compinit && compinit
 export ZSH="$HOME/.oh-my-zsh"
 source "$ZSH"/oh-my-zsh.sh
 
-# Add new path to PATH
+# Source NVM, wakatime and pip
 export PATH="${PATH:+${PATH}:}/home/$USER/.wakatime:/home/$USER/.local/bin"
 cowsay "Xin chào $USER"
