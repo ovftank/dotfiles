@@ -1,6 +1,6 @@
 # bin/bash
 
-result=$("$HOME"/.wakatime/wakatime-cli --today | grep -o '[0-9]\+ hrs\? [0-9]\+ mins' | sed 's/hrs\?/*/;s/mins//')
+result="$("$HOME"/.wakatime/wakatime-cli --today | grep -o '[0-9]\+ hrs\? [0-9]\+ mins\?\| [0-9]\+ mins\?' | sed 's/hrs\?/*/;s/mins\?//')"
 IFS='*' read -r hours minutes <<<"$result"
 total_minutes=$((hours * 60 + minutes))
 if ((total_minutes >= 480)); then
