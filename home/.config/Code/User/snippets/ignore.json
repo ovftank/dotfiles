@@ -1,0 +1,56 @@
+{
+	"Python": {
+		"prefix": "python",
+		"body": [
+			"# Python",
+			"*.pyc",
+			"__pycache__/",
+			"*.py[cod]",
+			".Python",
+			"*.sqlite3",
+			"MANIFEST",
+			"dist/",
+			"build/",
+			"*.egg-info/"
+		],
+		"description": "Python related files and directories"
+	},
+	"PHP": {
+		"prefix": "php",
+		"body": [
+			"# PHP",
+			"/vendor/",
+			"*.log"
+		],
+		"description": "PHP related files and directories"
+	},
+	"Node.js": {
+		"prefix": "nodejs",
+		"body": [
+			"# Node.js",
+			"node_modules/",
+			"package-lock.json"
+		],
+		"description": "Node.js related files and directories"
+	},
+	"VS Code": {
+		"prefix": "vscode",
+		"body": [
+			"# Visual Studio Code",
+			".vscode/",
+			"*.code-workspace"
+		],
+		"description": "Visual Studio Code related files and directories"
+	},
+	"Tailwind CSS": {
+		"prefix": "tailwind",
+		"body": [
+			"# Tailwind CSS",
+			"node_modules",
+			"package-lock.json",
+			"style.css",
+			"dist/"
+		],
+		"description": "Tailwind CSS related files and directories"
+	}
+}

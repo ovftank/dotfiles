@@ -1,0 +1,7 @@
+[user]
+	email = tripleseven190504@gmail.com
+	name = tripleseven190504
+[init]
+	defaultBranch = main
+[credential]
+	helper = store

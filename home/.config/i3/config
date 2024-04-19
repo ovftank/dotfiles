@@ -1,0 +1,16 @@
+#    _   ____    __            __
+#   (_) |_  /___/ /____ ____  / /__
+#  / / _/_ <___/ __/ _ `/ _ \/  '_/
+# /_/ /____/   \__/\_,_/_//_/_/\_\
+
+# General settings
+set $mod Mod4
+
+# Include general options
+include ~/.config/i3/options/general.conf
+
+# Include keybindings
+include ~/.config/i3/options/keymaps.conf
+
+# Include theme options
+include ~/.config/i3/options/theme.conf
