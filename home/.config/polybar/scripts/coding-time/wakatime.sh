@@ -1,8 +1,14 @@
 # bin/bash
 
-result="$("$HOME"/.wakatime/wakatime-cli --today | grep -o '[0-9]\+ hrs\? [0-9]\+ mins\?\| [0-9]\+ mins\?' | sed 's/hrs\?/*/;s/mins\?//')"
-IFS='*' read -r hours minutes <<<"$result"
-total_minutes=$((hours * 60 + minutes))
+result="$(wakatime --today | grep -o '[0-9]\+ hrs\? [0-9]\+ mins\?\| [0-9]\+ mins\?' | sed 's/hrs\?/*/;s/mins\?//')"
+if [ -z "$result" ]; then
+    result="$(wakatime --today | grep -o '[0-9]\+ mins' | sed 's/mins//')"
+    total_minutes=$result
+else
+    IFS='*' read -r hours minutes <<<"$result"
+    total_minutes=$((hours * 60 + minutes))
+fi
+
 if ((total_minutes >= 480)); then
     face=""
     color="#FF5555"
@@ -31,7 +37,7 @@ fi
 hours=$((total_minutes / 60))
 if ((hours == 0)); then
     hours=""
-elif((hours == 1)); then
+elif ((hours == 1)); then
     hours="0$hours hr"
 elif ((hours >= 2)); then
     hours="0$hours hrs"
