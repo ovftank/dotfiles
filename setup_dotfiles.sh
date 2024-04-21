@@ -31,7 +31,7 @@ install_yay_and_aur_packages() {
 install_pacman_packages() {
     echo "Installing pacman packages..."
     sudo pacman -Syyu || { echo "Failed to update system"; exit 1; }
-    sudo pacman -S wakatime pcmanfm i3-wm xorg-server xorg-xinit acpi feh php alacritty zsh git ttf-jetbrains-mono-nerd zsh-syntax-highlighting maim xclip rofi pulseaudio polybar --needed --noconfirm || { echo "Failed to install pacman packages"; exit 1; }
+    sudo pacman -S wakatime pcmanfm xarchiver unzip zip php i3-wm xorg-server xorg-xinit acpi feh php alacritty zsh git ttf-jetbrains-mono-nerd zsh-syntax-highlighting maim xclip rofi pulseaudio polybar --needed --noconfirm || { echo "Failed to install pacman packages"; exit 1; }
     sudo pacman -S --needed git go --noconfirm || { echo "Failed to install git and go"; exit 1; }
     echo "Pacman packages installed successfully."
 }
