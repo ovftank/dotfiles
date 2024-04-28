@@ -1,205 +1,160 @@
 {
-  "DOM Manipulation": {
-    "getElementById": {
-      "prefix": "getid",
-      "body": ["document.getElementById('${1:id_name}')"],
-      "description": "getElementById"
-    },
-    "addEventListener": {
-      "prefix": "addevent",
-      "body": [
-        "document.getElementById('${1:id_name}').addEventListener('${2:click}', function(event) {",
-        "    ${3:// Handle event}",
-        "    event.preventDefault();",
-        "});"
-      ],
-      "description": "addEventListener"
-    },
-    "Select Element by Selector": {
-      "prefix": "select-element",
-      "body": ["document.querySelector('${1:selector}')"],
-      "description": "Select Element by Selector"
-    },
-    "Select Elements by Selector": {
-      "prefix": "select-elements",
-      "body": ["document.querySelectorAll('${1:selector}')"],
-      "description": "Select Elements by Selector"
-    },
-    "DOMContentLoaded": {
-      "prefix": "dom-load",
-      "body": [
-        "window.addEventListener('DOMContentLoaded', function() {",
-        "  ${1:/* Hello */}",
-        "});"
-      ],
-      "description": "DOM Content Loaded Event Listener"
-    }
+  "ExpressEJS": {
+    "prefix": "express-ejs",
+    "body": [
+      "const express = require('express');",
+      "const path = require('path');",
+      "const app = express();",
+      "const PORT = 3000;",
+      "",
+      "app.set('view engine', 'ejs');",
+      "app.set('views', path.join(__dirname, 'static'));",
+      "",
+      "app.use(express.static('public'));",
+      "app.use(express.urlencoded({ extended: true }));",
+      "",
+      "app.use((req, res) => {",
+      "    res.status(404).render('404');",
+      "});",
+      "",
+      "app.get('/', (req, res) => {",
+      "    res.render('index');",
+      "});",
+      "",
+      "app.${1:get}",
+      "app.listen(PORT, () => {",
+      "    console.log(`Server running on port ${${PORT}}`);",
+      "});"
+    ],
+    "description": "Express.js Server Snippets"
   },
-  "HTTP Requests": {
-    "Fetch API": {
-      "prefix": "fetch",
-      "body": [
-        "fetch('${1:url}')",
-        "    .then(response => response.json())",
-        "    .then(data => {",
-        "        ${2:// Handle data}",
-        "    })",
-        "    .catch(error => {",
-        "        console.error('Error:', error);",
-        "    });"
-      ],
-      "description": "Fetch data using Fetch API"
-    },
-    "XMLHttpRequest": {
-      "prefix": "xhr",
-      "body": [
-        "var xhr = new XMLHttpRequest();",
-        "xhr.open('${1:GET}', 'http://${2:example.com}', true);",
-        "xhr.onreadystatechange = function() {",
-        "    if (xhr.readyState === XMLHttpRequest.DONE) {",
-        "        if (xhr.status === 200) {",
-        "            var data = JSON.parse(xhr.responseText);",
-        "            ${3:// Handle data}",
-        "        } else {",
-        "            console.error('Error:', xhr.statusText);",
-        "        }",
-        "    }",
-        "};",
-        "xhr.send();"
-      ],
-      "description": "XMLHttpRequest"
-    }
+  "Class Snippets": {
+    "prefix": "class",
+    "body": [
+      "class ${1:ClassName} {",
+      "    constructor(${2:params}) {",
+      "        this.${3:property} = ${4:value};",
+      "        // Initialize properties here",
+      "    }",
+      "",
+      "    ${5:method}() {",
+      "        ${6:body}",
+      "        // Method implementation here",
+      "    }",
+      "}"
+    ],
+    "description": "Class Snippets",
   },
-  "Express Framework": {
-    "Express app template": {
-      "prefix": "expressapp",
-      "body": [
-        "const express = require('express');",
-        "const cors = require('cors');",
-        "",
-        "const app = express();",
-        "app.use(express.static('${1:public}'));",
-        "app.use(cors({ origin: '${2:*}' }));",
-        "",
-        "app.get('/', (req, res) => {",
-        "    res.sendFile('index.html', { root: __dirname });",
-        "});",
-        "",
-        "// Handle 404 - Not Found",
-        "app.use((req, res, next) => {",
-        "    res.status(404).send('404: Page not found');",
-        "});",
-        "",
-        "// Handle 500 - Internal Server Error",
-        "app.use((err, req, res, next) => {",
-        "    console.error(err.stack);",
-        "    res.status(500).send('500: Internal Server Error');",
-        "});",
-        "",
-        "app.listen(${3:3000}, () => {",
-        "    console.log('Server is running on port ${3:3000}');",
-        "});"
-      ],
-      "description": "Express app template"
-    },
-    "Express Route": {
-      "prefix": "route",
-      "body": [
-        "app.${1:get}('${2:/}', (req, res) => {",
-        "    ${3:// Your code here}",
-        "    res.${4:send}(${5});",
-        "});"
-      ],
-      "description": "Express route"
-    },
-    "Express Middleware": {
-      "prefix": "middleware",
-      "body": [
-        "app.use((req, res, next) => {",
-        "    ${1:// Your middleware logic here}",
-        "    next();",
-        "});"
-      ],
-      "description": "Express middleware"
-    },
-    "Express Error Middleware": {
-      "prefix": "error-middleware",
-      "body": [
-        "app.use((err, req, res, next) => {",
-        "    ${1:// Your error handling logic here}",
-        "    res.status(${2:500}).send('Internal Server Error');",
-        "});"
-      ],
-      "description": "Express error middleware"
-    }
+  "EventListener": {
+    "prefix": "addEventListener",
+    "body": [
+      "${1:document}.addEventListener('${2:event}', (e) => {",
+      "    ${3:body}",
+      "});"
+    ],
+    "description": "Event Listener",
   },
-  "Security": {
-    "Anti-Hack": {
-      "prefix": "anti-hack",
-      "body": [
-        "document.addEventListener(\"contextmenu\", function(e) {",
-        "  e.preventDefault();",
-        "});",
-        "",
-        "document.addEventListener(\"keydown\", function(e) {",
-        "  if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === \"I\") {",
-        "    e.preventDefault();",
-        "  }",
-        "  if (e.key === \"F12\") {",
-        "    e.preventDefault();",
-        "    displayMessage();",
-        "  }",
-        "});",
-        "",
-        "",
-        "document.addEventListener('keydown', function(event) {",
-        "  if (event.ctrlKey && event.key === 'u') {",
-        "    event.preventDefault();",
-        "  }",
-        "});",
-        "",
-        "var message = [\"%cHack CC\", \"%cTắt đi ngay!\"];",
-        "var index = 0;",
-        "var lineIndex = 0;",
-        "",
-        "function displayMessage() {",
-        "  console.clear();",
-        "  for (var i = 0; i < lineIndex; i++) {",
-        "    console.log(",
-        "      message[i],",
-        "      \"color: red; font-weight: bold; font-size: 50px; background-color: yellow;\"",
-        "    );",
-        "  }",
-        "  var currentLine = message[lineIndex].substring(0, index);",
-        "  console.log(",
-        "    currentLine,",
-        "    \"color: red; font-weight: bold; font-size: 50px; background-color: yellow;\"",
-        "  );",
-        "  index++;",
-        "  if (index > message[lineIndex].length) {",
-        "    index = 0;",
-        "    lineIndex++;",
-        "    if (lineIndex >= message.length) {",
-        "      lineIndex = 0;",
-        "    }",
-        "  }",
-        "}",
-        "",
-        "document.addEventListener(\"copy\", function (e) {",
-        "  e.preventDefault();",
-        "});",
-        "",
-        "document.addEventListener(\"cut\", function (e) {",
-        "  e.preventDefault();",
-        "});",
-        "",
-        "function openDebugger() {",
-        "  debugger;",
-        "}",
-        "setInterval(displayMessage, 50);",
-        "setInterval(openDebugger, 50);"
-      ],
-      "description": "Anti-Hack"
-    }
+  "DOMContentLoaded": {
+    "prefix": "dom-load",
+    "body": [
+      "document.addEventListener('DOMContentLoaded', () => {",
+      "    ${1:body}",
+      "});"
+    ],
+    "description": "DOM Content Loaded Event"
+  },
+  "Arrow Function": {
+    "prefix": "function",
+    "body": [
+      "const ${1:name} = () => {",
+      "    ${2:body}",
+      "}"
+    ],
+    "description": "Arrow Function"
+  },
+  "Async Function": {
+    "prefix": "async",
+    "body": [
+      "const ${1:asyncFunctionName} = async () => {",
+      "    ${2:body}",
+      "};"
+    ],
+    "description": "Create an async function"
+  },
+  "Callback Function": {
+    "prefix": "callback",
+    "body": [
+      "const ${1:functionName} = (${2:params},callback) => {",
+      "    ${3:body}",
+      "    callback(${4:result});",
+      "}"
+    ],
+    "description": "Create a callback function"
+  },
+  "Anti-Hack": {
+    "prefix": "anti-hack",
+    "body": [
+      "document.addEventListener(\"contextmenu\", (e) => {",
+      "    e.preventDefault();",
+      "});",
+      "",
+      "document.addEventListener(\"keydown\", (e) => {",
+      "    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === \"I\") {",
+      "        e.preventDefault();",
+      "    }",
+      "    if (e.key === \"F12\") {",
+      "        e.preventDefault();",
+      "        displayMessage();",
+      "    }",
+      "});",
+      "",
+      "document.addEventListener('keydown', (event) => {",
+      "    if (event.ctrlKey && event.key === 'u') {",
+      "        event.preventDefault();",
+      "    }",
+      "});",
+      "",
+      "var message = [\"%cHack CC\", \"%cTắt đi ngay!\"];",
+      "var index = 0;",
+      "var lineIndex = 0;",
+      "",
+      "function displayMessage() {",
+      "    console.clear();",
+      "    for (var i = 0; i < lineIndex; i++) {",
+      "        console.log(",
+      "            message[i],",
+      "            \"color: red; font-weight: bold; font-size: 50px; background-color: yellow;\"",
+      "        );",
+      "    }",
+      "    var currentLine = message[lineIndex].substring(0, index);",
+      "    console.log(",
+      "        currentLine,",
+      "        \"color: red; font-weight: bold; font-size: 50px; background-color: yellow;\"",
+      "    );",
+      "    index++;",
+      "    if (index > message[lineIndex].length) {",
+      "        index = 0;",
+      "        lineIndex++;",
+      "        if (lineIndex >= message.length) {",
+      "            lineIndex = 0;",
+      "        }",
+      "    }",
+      "}",
+      "",
+      "document.addEventListener(\"copy\", (e) => {",
+      "    e.preventDefault();",
+      "});",
+      "",
+      "document.addEventListener(\"cut\", (e) => {",
+      "    e.preventDefault();",
+      "});",
+      "",
+      "function openDebugger() {",
+      "    debugger;",
+      "}",
+      "setInterval(displayMessage, 50);",
+      "setInterval(openDebugger, 50);"
+    ],
+    "description": "Anti-Hack"
   }
 }

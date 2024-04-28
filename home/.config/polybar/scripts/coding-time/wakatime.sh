@@ -39,10 +39,10 @@ if ((hours == 0)); then
     hours=""
 elif ((hours == 1)); then
     hours="0$hours hr"
-elif ((hours >= 2)); then
+elif ((hours >= 2 && hours <= 9)); then
     hours="0$hours hrs"
-elif ((hours < 10)); then
-    hours="0"$hours
+elif ((hours >= 10)); then
+    hours="$hours hrs"
 fi
 minutes=$((total_minutes % 60))
 echo "$face  %{F$color}$hours $minutes mins time coding%{F-}"

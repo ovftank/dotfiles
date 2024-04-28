@@ -2,8 +2,15 @@
 
 battery_info=$(acpi -b)
 charging_status=$(acpi -a | awk '{print $3}')
-
-battery_percentage=$(echo "$battery_info" | awk '{print $4}' | tr -d '%,')
+if [ "$charging_status" = "on-line" ]; then
+    battery_status="󰂄"
+    battery_percentage=$(echo "$battery_info" | awk '{print $4}' | tr -d '%,')
+    if ((battery_percentage == "charging")); then
+        battery_percentage=$(echo "$battery_info" | awk '{print $5}' | tr -d '%,')
+    fi
+else
+    battery_percentage=$(echo "$battery_info" | awk '{print $4}' | tr -d '%,')
+fi
 if (($(echo "$battery_percentage < 20" | bc -l))); then
     battery_status="󰁻"
     color="#FF5555"
@@ -17,7 +24,6 @@ else
     battery_status="󰂁"
     color="#8BE9FD"
 fi
-
 if [ "$charging_status" = "on-line" ]; then
     battery_status="󰂄"
 fi

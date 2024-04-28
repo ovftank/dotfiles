@@ -13,10 +13,10 @@ alias ssh='TERM=xterm-256color ssh'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias cls='clear'
+alias open='xdg-open'
 alias -s txt=code
 alias -s py=python
 alias -s js=node
-
 # Export Input Method variables
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
@@ -27,7 +27,7 @@ export QT_QPA_PLATFORMTHEME=gtk3
 export GTK_THEME=Dracula
 
 # Plugins
-export plugins=(git gitfast history)
+export plugins=(git gitfast history zsh-better-npm-completion)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Autoload and source Oh My Zsh
@@ -35,6 +35,10 @@ autoload -U compinit && compinit
 export ZSH="$HOME/.oh-my-zsh"
 source "$ZSH"/oh-my-zsh.sh
 
-# Source NVM, wakatime and pip
+# Add new path to PATH
 export PATH="${PATH:+${PATH}:}/home/$USER/.wakatime:/home/$USER/.local/bin"
 cowsay "Xin chào $USER"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+nvm use lts/hydrogen > /dev/null 2>&1

@@ -6,7 +6,8 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[javascript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
+        "editor.defaultFormatter": "ms-vsliveshare.vsliveshare",
+        "editor.showUnused": true
     },
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
@@ -44,6 +45,10 @@
     "debug.allowBreakpointsEverywhere": true,
     "editor.accessibilitySupport": "off",
     "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.codeActionsOnSave": {
+        "addMissingImports": "always",
+        "source.organizeImports": "always"
+    },
     "editor.codeLensFontFamily": "'JetBrainsMono Nerd Font', 'JetBrainsMono Nerd Font Mono', 'JetBrainsMono'",
     "editor.comments.ignoreEmptyLines": true,
     "editor.defaultColorDecorators": true,
@@ -73,6 +78,10 @@
     "editor.stickyScroll.enabled": true,
     "editor.suggest.showWords": false,
     "editor.suggestSelection": "recentlyUsed",
+    "emmet.includeLanguages": {
+        "javascript": "html",
+        "python": "html"
+    },
     "emmet.showSuggestionsAsSnippets": true,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
@@ -101,15 +110,21 @@
     "html.format.indentHandlebars": true,
     "html.format.indentInnerHtml": true,
     "html.format.templating": true,
+    "html.suggest.html5": true,
     "javascript.inlayHints.enumMemberValues.enabled": true,
     "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+    "javascript.inlayHints.parameterNames": "all",
     "javascript.inlayHints.variableTypes.enabled": true,
+    "javascript.suggestionActions.enabled": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
     "livePreview.debugOnExternalPreview": true,
     "livePreview.hostIP": "0.0.0.0",
     "livePreview.httpHeaders": {
         "Accept-Ranges": "bytes",
         "Access-Control-Allow-Origin": "*"
     },
+    "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.useLocalIp": true,
     "material-icon-theme.activeIconPack": "react",
     "mediaPreview.video.autoPlay": true,
     "path-autocomplete.excludedItems": {
@@ -163,6 +178,7 @@
     "terminal.integrated.rightClickBehavior": "paste",
     "terminal.sourceControlRepositoriesKind": "external",
     "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+    "wakatime.apiKey": "waka_fc611e5b-5007-4575-83bc-d4c589c03b74",
     "window.autoDetectHighContrast": false,
     "window.customMenuBarAltFocus": false,
     "window.customTitleBarVisibility": "auto",

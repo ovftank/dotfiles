@@ -21,7 +21,8 @@ install_yay_and_aur_packages() {
     yay -S downgrade visual-studio-code-bin google-chrome ibus-bamboo --noconfirm || { echo "Failed to install AUR packages"; exit 1; }
     downgrade -y python || { echo "Failed to downgrade Python"; exit 1; }
     python -m ensurepip --upgrade || { echo "Failed to upgrade pip"; exit 1; }
-    sudo pacman -S telegram-desktop lxappearance-gtk3 -y || { echo "Failed to install pacman packages"; exit 1; }
+    sudo pacman -S telegram-desktop lxappearance-gtk3 sddm -y || { echo "Failed to install pacman packages"; exit 1; }
+    systemctl enable sddm
     sudo ln -s /usr/lib/libpython3.10.so /usr/lib/libpython3.11.so.1.0
     sudo ln -s /usr/lib/libpython3.10.so /usr/lib/libpython3.11.so
     echo "Yay and AUR packages installed successfully."
