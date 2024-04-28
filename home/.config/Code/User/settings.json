@@ -178,7 +178,7 @@
     "terminal.integrated.rightClickBehavior": "paste",
     "terminal.sourceControlRepositoriesKind": "external",
     "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-    "wakatime.apiKey": "waka_fc611e5b-5007-4575-83bc-d4c589c03b74",
+    "wakatime.apiKey": "",
     "window.autoDetectHighContrast": false,
     "window.customMenuBarAltFocus": false,
     "window.customTitleBarVisibility": "auto",
