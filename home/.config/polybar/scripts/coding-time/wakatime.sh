@@ -1,5 +1,4 @@
 # bin/bash
-
 result="$(wakatime --today | grep -o '[0-9]\+ hrs\? [0-9]\+ mins\?\| [0-9]\+ mins\?' | sed 's/hrs\?/*/;s/mins\?//')"
 if [ -z "$result" ]; then
     result="$(wakatime --today | grep -o '[0-9]\+ mins' | sed 's/mins//')"
@@ -45,4 +44,7 @@ elif ((hours >= 10)); then
     hours="$hours hrs"
 fi
 minutes=$((total_minutes % 60))
+if ((minutes <= 10)); then
+    minutes="0$minutes"
+fi
 echo "$face  %{F$color}$hours $minutes mins time coding%{F-}"

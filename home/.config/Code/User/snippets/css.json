@@ -1,0 +1,23 @@
+{
+	"reset": {
+		"prefix": "reset",
+		"body": [
+			"* {",
+			"-webkit-appearance: none;",
+			"-moz-appearance: none;",
+			"appearance: none;",
+			"}",
+			"*:focus {",
+			"outline: none;",
+			"}",
+			"input::-webkit-outer-spin-button,",
+			"input::-webkit-inner-spin-button {",
+			"-webkit-appearance: none;",
+			"}",
+			"input[type=\"number\"] {",
+			"-moz-appearance: textfield;",
+			"}"
+		],
+		"description": "Reset CSS"
+	}
+}

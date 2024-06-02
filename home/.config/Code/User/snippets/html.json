@@ -1,79 +1,77 @@
 {
-  "Fonts": {
-    "JetBrains Mono Font": {
-      "prefix": "font-jetbrains-mono",
-      "body": [
-        "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">",
-        "<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
-        "<link href=\"https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap\" rel=\"stylesheet\">"
-      ],
-      "description": "JetBrains Mono Font HTML Snippet"
-    },
-    "Font Awesome 6.5.2": {
-      "prefix": "font-awesome-652",
-      "body": [
-        "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css\">"
-      ],
-      "description": "Font Awesome version 6.5.2"
-    }
+  "JetBrains Mono Font": {
+    "prefix": "font-jetbrains-mono",
+    "body": [
+      "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">",
+      "<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
+      "<link href=\"https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap\" rel=\"stylesheet\">"
+    ],
+    "description": "JetBrains Mono Font HTML Snippet"
   },
-  "JavaScript Libraries": {
-    "Include Chart.js": {
-      "prefix": "chart-js",
-      "body": [
-        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js\"></script>"
-      ],
-      "description": "Include Chart.js library in HTML"
-    },
-    "SweetAlert2": {
-      "prefix": "sweetalert2-js",
-      "body": [
-        "<script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>"
-      ],
-      "description": "Include SweetAlert2 version 11"
-    },
-    "jQuery CDN": {
-      "prefix": "jquery-js",
-      "body": [
-        "<script src=\"https://code.jquery.com/jquery-3.7.1.min.js\" integrity=\"sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=\" crossorigin=\"anonymous\"></script>"
-      ],
-      "description": "Include jQuery from CDN"
-    },
-    "Moment.js": {
-      "prefix": "moment-js",
-      "body": [
-        "<script src=\"https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js\"></script>"
-      ],
-      "description": "Include Moment.js library"
-    }
+  "Font Awesome 6.5.2": {
+    "prefix": "font-awesome-652",
+    "body": [
+      "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css\">"
+    ],
+    "description": "Font Awesome version 6.5.2"
   },
-  "CSS Libraries": {
-    "Animate.css": {
-      "prefix": "animate-css",
-      "body": [
-        "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css\">"
-      ],
-      "description": "Include Animate.css"
-    }
+  "Include Chart.js": {
+    "prefix": "chart-js",
+    "body": [
+      "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js\"></script>"
+    ],
+    "description": "Include Chart.js library in HTML"
+  },
+  "SweetAlert2": {
+    "prefix": "sweetalert2-js",
+    "body": [
+      "<script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>"
+    ],
+    "description": "Include SweetAlert2 version 11"
+  },
+  "jQuery CDN": {
+    "prefix": "jquery-js",
+    "body": [
+      "<script src=\"https://code.jquery.com/jquery-3.7.1.min.js\" integrity=\"sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=\" crossorigin=\"anonymous\"></script>"
+    ],
+    "description": "Include jQuery from CDN"
+  },
+  "Moment.js": {
+    "prefix": "moment-js",
+    "body": [
+      "<script src=\"https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js\"></script>"
+    ],
+    "description": "Include Moment.js library"
+  },
+  "Animate.css": {
+    "prefix": "animate-css",
+    "body": [
+      "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css\">"
+    ],
+    "description": "Include Animate.css"
   },
   "SEO Meta Tags": {
-    "SEO Meta Tags": {
-      "prefix": "seo-meta-tag",
-      "body": [
-        "<meta charset=\"UTF-8\">",
-        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
-        "<meta name=\"description\" content=\"$1\">",
-        "<meta name=\"keywords\" content=\"$2\">",
-        "<meta name=\"author\" content=\"$3\">",
-        "<link rel=\"canonical\" href=\"$4\">",
-        "<meta property=\"og:title\" content=\"$5\">",
-        "<meta property=\"og:description\" content=\"$6\">",
-        "<meta property=\"og:image\" content=\"$7\">",
-        "<meta property=\"og:url\" content=\"$8\">",
-        "<meta property=\"og:type\" content=\"$9\">",
-        "<meta property=\"og:site_name\" content=\"$10\">"
-      ],
-      "description": "SEO optimized meta tags including Open Graph properties"
-    }
+    "prefix": "seo-meta-tag",
+    "body": [
+      "<meta charset=\"UTF-8\">",
+      "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+      "<meta name=\"description\" content=\"$1\">",
+      "<meta name=\"keywords\" content=\"$2\">",
+      "<meta name=\"author\" content=\"$3\">",
+      "<link rel=\"canonical\" href=\"$4\">",
+      "<meta property=\"og:title\" content=\"$5\">",
+      "<meta property=\"og:description\" content=\"$6\">",
+      "<meta property=\"og:image\" content=\"$7\">",
+      "<meta property=\"og:url\" content=\"$8\">",
+      "<meta property=\"og:type\" content=\"$9\">",
+      "<meta property=\"og:site_name\" content=\"$10\">"
+    ],
+    "description": "SEO optimized meta tags including Open Graph properties"
+  },
+  "Attributes": {
+    "prefix": "one-time-code",
+    "body": [
+      "<input type=\"number\" placeholder=\"Code\" inputMode=\"numeric\" pattern=\"[0-9]*\" autoComplete=\"one-time-code\" />"
+    ]
   }
 }
