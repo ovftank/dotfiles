@@ -37,7 +37,7 @@ install_yay_and_aur_packages() {
         echo "Failed to install AUR packages"
         exit 1
     }
-    downgrade -y python || {
+    sudo downgrade -y python || {
         echo "Failed to downgrade Python"
         exit 1
     }
