@@ -3,7 +3,7 @@
 # Function to clone dotfiles repository
 clone_dotfiles_repository() {
     echo "Cloning dotfiles repository..."
-    git clone https://github.com/tripleseven190504/dotfiles ~/dotfiles || {
+    git clone https://github.com/ovftank/dotfiles ~/dotfiles || {
         echo "Failed to clone dotfiles repository"
         exit 1
     }
@@ -76,7 +76,7 @@ install_pacman_packages() {
 # Function to configure git
 configure_git() {
     echo "Configuring git..."
-    git config --global user.email "tripleseven190504@gmail.com" || {
+    git config --global user.email "ovftank@gmail.com" || {
         echo "Failed to configure git email"
         exit 1
     }
