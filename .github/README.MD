@@ -5,5 +5,5 @@
 👇 - Copy the following lines to the clipboard and paste it into your terminal 👇
 
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/tripleseven190504/dotfiles/main/setup_dotfiles.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ovftank/dotfiles/main/setup_dotfiles.sh)"
 ```
