@@ -1,8 +1,0 @@
-# Export Input Method variables
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
-
-# Themes
-export QT_QPA_PLATFORMTHEME=gtk3
-export GTK_THEME=Dracula

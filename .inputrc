@@ -1,0 +1,10 @@
+set completion-ignore-case on
+set show-all-if-ambiguous on
+set colored-stats on
+set page-completions off
+set skip-completed-text on
+set bell-style none
+
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+"\e[3;5~": kill-word
