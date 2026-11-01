@@ -49,3 +49,7 @@ __zoxide_cd_complete() {
     return 0
 }
 complete -F __zoxide_cd_complete -o filenames -- cd
+
+: "${EDITOR:=nvim}"
+: "${VISUAL:=$EDITOR}"
+export EDITOR VISUAL

@@ -1,0 +1,191 @@
+advanced_mouse_actions false
+auto_layout false
+copy_clipboard "system"
+copy_command "xclip -selection clipboard"
+default_layout "tabbar"
+default_mode "locked"
+disable_session_metadata true
+focus_follows_mouse false
+host_notification_protocol "osc99"
+mouse_click_through false
+mouse_hover_effects false
+mouse_hover_tips false
+mouse_mode true
+mouse_scroll_resize false
+osc133_command_selection true
+pane_frame_style "full"
+pane_frames true
+scroll_buffer_size 10000
+scroll_mode_sync false
+scrollback_editor "nvim"
+scrollback_lines_to_serialize 0
+serialize_pane_viewport false
+session_serialization false
+show_release_notes false
+show_startup_tips false
+simplified_ui true
+stacked_pane_list false
+support_kitty_graphics_protocol true
+theme "dracula-theme"
+visual_bell false
+
+ui {
+    pane_frames {
+        rounded_corners false
+        hide_session_name true
+    }
+}
+
+themes {
+    dracula-theme {
+        text_unselected {
+            base 248 248 242
+            background 40 42 54
+            emphasis_0 255 184 108
+            emphasis_1 139 233 253
+            emphasis_2 80 250 123
+            emphasis_3 255 121 198
+        }
+        text_selected {
+            base 248 248 242
+            background 68 71 90
+            emphasis_0 255 184 108
+            emphasis_1 139 233 253
+            emphasis_2 80 250 123
+            emphasis_3 255 121 198
+        }
+        ribbon_selected {
+            base 40 42 54
+            background 189 147 249
+            emphasis_0 255 85 85
+            emphasis_1 255 184 108
+            emphasis_2 255 121 198
+            emphasis_3 98 114 164
+        }
+        ribbon_unselected {
+            base 248 248 242
+            background 68 71 90
+            emphasis_0 255 85 85
+            emphasis_1 68 71 90
+            emphasis_2 98 114 164
+            emphasis_3 255 121 198
+        }
+        frame_selected {
+            base 189 147 249
+            background 40 42 54
+            emphasis_0 255 184 108
+            emphasis_1 139 233 253
+            emphasis_2 255 121 198
+            emphasis_3 40 42 54
+        }
+        frame_unselected {
+            base 68 71 90
+            background 40 42 54
+            emphasis_0 255 184 108
+            emphasis_1 139 233 253
+            emphasis_2 255 121 198
+            emphasis_3 40 42 54
+        }
+        frame_highlight {
+            base 255 184 108
+            background 40 42 54
+            emphasis_0 255 121 198
+            emphasis_1 255 184 108
+            emphasis_2 255 184 108
+            emphasis_3 255 184 108
+        }
+        table_title {
+            base 189 147 249
+            background 40 42 54
+            emphasis_0 255 184 108
+            emphasis_1 139 233 253
+            emphasis_2 80 250 123
+            emphasis_3 255 121 198
+        }
+        table_cell_selected {
+            base 248 248 242
+            background 68 71 90
+            emphasis_0 255 184 108
+            emphasis_1 139 233 253
+            emphasis_2 80 250 123
+            emphasis_3 255 121 198
+        }
+        table_cell_unselected {
+            base 248 248 242
+            background 40 42 54
+            emphasis_0 255 184 108
+            emphasis_1 139 233 253
+            emphasis_2 80 250 123
+            emphasis_3 255 121 198
+        }
+        list_selected {
+            base 248 248 242
+            background 68 71 90
+            emphasis_0 255 184 108
+            emphasis_1 139 233 253
+            emphasis_2 80 250 123
+            emphasis_3 255 121 198
+        }
+        list_unselected {
+            base 248 248 242
+            background 40 42 54
+            emphasis_0 255 184 108
+            emphasis_1 139 233 253
+            emphasis_2 80 250 123
+            emphasis_3 255 121 198
+        }
+        exit_code_success {
+            base 80 250 123
+            background 40 42 54
+            emphasis_0 139 233 253
+            emphasis_1 40 42 54
+            emphasis_2 255 121 198
+            emphasis_3 98 114 164
+        }
+        exit_code_error {
+            base 255 85 85
+            background 40 42 54
+            emphasis_0 241 250 140
+            emphasis_1 40 42 54
+            emphasis_2 40 42 54
+            emphasis_3 40 42 54
+        }
+        multiplayer_user_colors {
+            player_1 255 121 198
+            player_2 98 114 164
+            player_3 189 147 249
+            player_4 241 250 140
+            player_5 139 233 253
+            player_6 255 184 108
+            player_7 255 85 85
+            player_8 80 250 123
+            player_9 248 248 242
+            player_10 68 71 90
+        }
+    }
+}
+
+keybinds {
+    locked clear-defaults=true {
+
+        bind "Ctrl h" { MoveFocus "Left"; }
+        bind "Ctrl j" { MoveFocus "Down"; }
+        bind "Ctrl k" { MoveFocus "Up"; }
+        bind "Ctrl l" { MoveFocus "Right"; }
+
+        bind "Ctrl Shift j" { NewPane "Down"; }
+        bind "Ctrl Shift l" { NewPane "Right"; }
+
+
+        bind "Ctrl t" { NewTab; }
+        bind "Ctrl Tab" { GoToNextTab; }
+        bind "Ctrl Shift Tab" { GoToPreviousTab; }
+        bind "Ctrl 1" { GoToTab 1; }
+        bind "Ctrl 2" { GoToTab 2; }
+        bind "Ctrl 3" { GoToTab 3; }
+        bind "Ctrl 4" { GoToTab 4; }
+        bind "Ctrl 5" { GoToTab 5; }
+
+        bind "Ctrl w" { CloseTab; }
+    }
+}

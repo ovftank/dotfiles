@@ -23,7 +23,7 @@
   "lastChangelogVersion": "1.4.0",
   "terminal": {
     "hyperlinks": true,
-    "images": "auto",
+    "images": "kitty",
     "showImages": true,
     "trueColor": true
   },
