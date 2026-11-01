@@ -1,0 +1,30 @@
+{
+  "mcpServers": {
+    "exa": {
+      "type": "http",
+      "url": "https://mcp.exa.ai/mcp?login",
+      "description": "Exa web search: search the web, fetch pages and run research queries for current information"
+    },
+    "firecrawl": {
+      "type": "http",
+      "url": "https://mcp.firecrawl.dev/v2/mcp-oauth",
+      "description": "Firecrawl: scrape, crawl and extract structured content from websites"
+    },
+    "mdn": {
+      "type": "http",
+      "url": "https://mcp.mdn.mozilla.net/",
+      "description": "MDN Web Docs: search and read authoritative web platform documentation"
+    },
+    "microsoft-learn": {
+      "type": "http",
+      "url": "https://learn.microsoft.com/api/mcp",
+      "description": "Microsoft Learn: search Microsoft, Azure and .NET documentation and code samples"
+    },
+    "mobbin": {
+      "type": "http",
+      "url": "https://api.mobbin.com/mcp",
+      "description": "Mobbin: UI/UX design references, mobile and web screen flows",
+      "enabled": false
+    }
+  }
+}
