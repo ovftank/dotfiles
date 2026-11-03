@@ -62,8 +62,12 @@
 	"tui.altScreen.bottom": [],
 	"tui.altScreen.halfPageDown": [],
 	"tui.altScreen.halfPageUp": [],
-	"tui.altScreen.lineDown": [],
-	"tui.altScreen.lineUp": [],
+	"tui.altScreen.lineDown": [
+		"ctrl+j"
+	],
+	"tui.altScreen.lineUp": [
+		"ctrl+k"
+	],
 	"tui.altScreen.nextPrompt": [],
 	"tui.altScreen.pageDown": [],
 	"tui.altScreen.pageUp": [],
