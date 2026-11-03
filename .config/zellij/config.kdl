@@ -168,13 +168,18 @@ themes {
 keybinds {
     locked clear-defaults=true {
 
-        bind "Ctrl h" { MoveFocus "Left"; }
-        bind "Ctrl j" { MoveFocus "Down"; }
-        bind "Ctrl k" { MoveFocus "Up"; }
-        bind "Ctrl l" { MoveFocus "Right"; }
+        bind "Alt h" { MoveFocus "Left"; }
+        bind "Alt j" { MoveFocus "Down"; }
+        bind "Alt k" { MoveFocus "Up"; }
+        bind "Alt l" { MoveFocus "Right"; }
 
         bind "Ctrl Shift j" { NewPane "Down"; }
         bind "Ctrl Shift l" { NewPane "Right"; }
+
+        bind "Alt Shift h" { Resize "Increase Left"; }
+        bind "Alt Shift j" { Resize "Increase Down"; }
+        bind "Alt Shift k" { Resize "Increase Up"; }
+        bind "Alt Shift l" { Resize "Increase Right"; }
 
 
         bind "Ctrl t" { NewTab; }
