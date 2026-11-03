@@ -1,0 +1,59 @@
+add_newline = false
+
+format = """
+$directory$git_branch$git_status$nodejs$python$rust$cmd_duration
+$character"""
+
+[character]
+success_symbol = "[❯](bold #9ece6a)"
+error_symbol = "[❯](bold #f7768e)"
+vimcmd_symbol = "[❮](bold #bb9af7)"
+
+[directory]
+style = "bold #7aa2f7"
+truncation_length = 4
+truncate_to_repo = true
+read_only = " "
+
+[git_branch]
+symbol = ""
+style = "bold #bb9af7"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "bold #e0af68"
+format = "[$all_status$ahead_behind]($style) "
+conflicted = "="
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+untracked = "?"
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = "✘"
+
+[nodejs]
+symbol = " "
+style = "bold #9ece6a"
+format = "[$symbol$version]($style) "
+
+[python]
+symbol = " "
+style = "bold #e0af68"
+format = "[$symbol$version]($style) "
+
+[rust]
+symbol = " "
+style = "bold #f7768e"
+format = "[$symbol$version]($style) "
+
+[cmd_duration]
+min_time = 2000
+format = "[$duration]($style) "
+style = "dimmed #565f89"
+
+[hostname]
+ssh_only = true
+format = "[$hostname]($style) "
+style = "bold #7dcfff"

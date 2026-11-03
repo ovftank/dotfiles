@@ -4,6 +4,7 @@ copy_clipboard "system"
 copy_command "xclip -selection clipboard"
 default_layout "tabbar"
 default_mode "locked"
+default_shell "zsh"
 disable_session_metadata true
 focus_follows_mouse false
 host_notification_protocol "osc99"

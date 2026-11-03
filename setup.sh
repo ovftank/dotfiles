@@ -10,6 +10,12 @@ FONT_DIRECTORY="$HOME/.local/share/fonts/JetBrainsMonoNF"
 FONT_VERSION_SOURCE="$FONT_DIRECTORY/JetBrainsMonoNLNerdFont-Regular.ttf"
 NODE_LTS_NAME="krypton"
 
+case "$(uname -m)" in
+x86_64) target_architecture=x86_64 ;;
+aarch64 | arm64) target_architecture=aarch64 ;;
+*) echo "unsupported architecture: $(uname -m)" >&2; exit 1 ;;
+esac
+
 get_latest_release_tag() {
 	release_tag=$(curl -sIL -o /dev/null -w '%{url_effective}' \
 		"https://github.com/$1/releases/latest" | sed 's#.*/tag/##')
@@ -37,7 +43,8 @@ if command -v gsettings >/dev/null 2>&1; then
 		"['<Control>alt_R']"
 fi
 
-sudo apt-get install -y stow git curl wget xclip
+sudo apt-get install -y stow git curl wget xclip zsh \
+	zsh-autosuggestions zsh-syntax-highlighting
 
 repository=BurntSushi/ripgrep
 release_tag=$(get_latest_release_tag "$repository")
@@ -83,11 +90,6 @@ release_tag=$(get_latest_release_tag "$repository")
 desired_version=${release_tag#v}
 installed_version=$(get_installed_version zellij)
 if [ "$installed_version" != "$desired_version" ]; then
-	case "$(uname -m)" in
-	x86_64) target_architecture=x86_64 ;;
-	aarch64 | arm64) target_architecture=aarch64 ;;
-	*) echo "unsupported architecture: $(uname -m)" >&2; exit 1 ;;
-	esac
 	download_path=$(mktemp --suffix=.tar.gz)
 	extraction_directory=$(mktemp -d)
 	download_base_url="https://github.com/$repository/releases/download"
@@ -98,6 +100,70 @@ if [ "$installed_version" != "$desired_version" ]; then
 	mkdir -p "$HOME/.local/bin"
 	install -m 755 "$extraction_directory/zellij" "$HOME/.local/bin/zellij"
 	rm -rf "$extraction_directory" "$download_path"
+fi
+
+repository=eza-community/eza
+release_tag=$(get_latest_release_tag "$repository")
+desired_version=${release_tag#v}
+
+installed_version=$("$HOME/.local/bin/eza" --version 2>/dev/null |
+	sed -n 2p | awk '{print $1}' | sed 's/^v//')
+if [ "$installed_version" != "$desired_version" ]; then
+	download_path=$(mktemp --suffix=.tar.gz)
+	extraction_directory=$(mktemp -d)
+	download_base_url="https://github.com/$repository/releases/download"
+	release_asset="eza_${target_architecture}-unknown-linux-gnu.tar.gz"
+	curl -fsSL -o "$download_path" \
+		"$download_base_url/$release_tag/$release_asset"
+	tar -xf "$download_path" -C "$extraction_directory"
+	mkdir -p "$HOME/.local/bin"
+	install -m 755 "$extraction_directory/eza" "$HOME/.local/bin/eza"
+	rm -rf "$extraction_directory" "$download_path"
+fi
+
+repository=starship/starship
+release_tag=$(get_latest_release_tag "$repository")
+desired_version=${release_tag#v}
+installed_version=$(get_installed_version starship)
+if [ "$installed_version" != "$desired_version" ]; then
+	download_path=$(mktemp --suffix=.tar.gz)
+	extraction_directory=$(mktemp -d)
+	download_base_url="https://github.com/$repository/releases/download"
+	release_asset="starship-${target_architecture}-unknown-linux-gnu.tar.gz"
+	curl -fsSL -o "$download_path" \
+		"$download_base_url/$release_tag/$release_asset"
+	tar -xf "$download_path" -C "$extraction_directory"
+	mkdir -p "$HOME/.local/bin"
+	install -m 755 "$extraction_directory/starship" "$HOME/.local/bin/starship"
+	rm -rf "$extraction_directory" "$download_path"
+fi
+
+starship_version=$(get_installed_version starship)
+starship_cache_file="$HOME/.cache/starship/init.zsh"
+starship_cache_stamp="$HOME/.cache/starship/.version"
+if [ -n "$starship_version" ] && [ "$(cat "$starship_cache_stamp" 2>/dev/null)" != "$starship_version" ]; then
+	mkdir -p "${starship_cache_file%/*}"
+	starship init zsh >"$starship_cache_file"
+	printf '%s\n' "$starship_version" >"$starship_cache_stamp"
+fi
+
+if [ "$(getent passwd "$(id -un)" | cut -d: -f7)" != "/usr/bin/zsh" ]; then
+	sudo chsh -s /usr/bin/zsh "$(id -un)"
+fi
+
+zsh_completion_directory="$HOME/.local/share/zsh/site-functions"
+zellij_installed_version=$(get_installed_version zellij)
+zellij_completion_stamp="$zsh_completion_directory/.zellij-$zellij_installed_version"
+mkdir -p "$zsh_completion_directory"
+if [ ! -f "$zellij_completion_stamp" ]; then
+	zellij setup --generate-completion zsh 2>/dev/null | awk '
+		NR == 1 && /^#compdef/ { next }
+		index($0, "if [ \"$funcstack[1]\" = \"_zellij\" ]; then") == 1 { skip = 1; next }
+		skip && $0 == "fi" { skip = 0; next }
+		!skip { print }
+	' | sed 's/^_zellij() {$/_zellij_clap() {/' >"$zsh_completion_directory/_zellij_clap"
+	rm -f "$zsh_completion_directory"/.zellij-*
+	: >"$zellij_completion_stamp"
 fi
 
 repository=ryanoasis/nerd-fonts
