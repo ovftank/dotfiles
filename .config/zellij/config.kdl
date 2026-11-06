@@ -18,7 +18,7 @@ pane_frame_style "full"
 pane_frames true
 scroll_buffer_size 10000
 scroll_mode_sync false
-scrollback_editor "nvim"
+scrollback_editor "vi"
 scrollback_lines_to_serialize 0
 serialize_pane_viewport false
 session_serialization false

@@ -10,21 +10,20 @@
       "url": "https://mcp.firecrawl.dev/v2/mcp-oauth",
       "description": "Firecrawl: scrape, crawl and extract structured content from websites"
     },
-    "mdn": {
-      "type": "http",
-      "url": "https://mcp.mdn.mozilla.net/",
-      "description": "MDN Web Docs: search and read authoritative web platform documentation"
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ],
+      "exposure": "codemode",
+      "description": "Chrome DevTools: live Chrome control (perf, network, console, screenshots, Puppeteer)"
     },
-    "microsoft-learn": {
-      "type": "http",
-      "url": "https://learn.microsoft.com/api/mcp",
-      "description": "Microsoft Learn: search Microsoft, Azure and .NET documentation and code samples"
-    },
-    "mobbin": {
-      "type": "http",
-      "url": "https://api.mobbin.com/mcp",
-      "description": "Mobbin: UI/UX design references, mobile and web screen flows",
-      "enabled": false
+    "cua-driver": {
+      "command": "cua-driver",
+      "args": [
+        "mcp"
+      ]
     }
   }
 }

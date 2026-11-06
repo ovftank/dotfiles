@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Fcitx 5
+Comment=Start the input method daemon
+Exec=/usr/bin/fcitx5 -d -r
+Icon=fcitx
+Terminal=false
+NoDisplay=true
+X-GNOME-Autostart-Phase=Applications
+X-GNOME-AutoRestart=true
+X-GNOME-Autostart-Notify=false
+X-KDE-autostart-after=panel
+X-KDE-StartupNotify=false

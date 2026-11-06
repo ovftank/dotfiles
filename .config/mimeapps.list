@@ -1,0 +1,16 @@
+[Default Applications]
+x-scheme-handler/tg=org.telegram.desktop._dd24012bfd4dc8746066e8505bf23fa9.desktop
+x-scheme-handler/tonsite=org.telegram.desktop._dd24012bfd4dc8746066e8505bf23fa9.desktop
+x-scheme-handler/ton=org.telegram.desktop._dd24012bfd4dc8746066e8505bf23fa9.desktop
+text/html=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
+x-scheme-handler/jetbrains=jetbrainsd.desktop
+
+[Added Associations]
+x-scheme-handler/tg=org.telegram.desktop._7a2ecce0b3c23d86fb8b8a6991f46947.desktop;org.telegram.desktop._dd24012bfd4dc8746066e8505bf23fa9.desktop;
+x-scheme-handler/tonsite=org.telegram.desktop._7a2ecce0b3c23d86fb8b8a6991f46947.desktop;org.telegram.desktop._dd24012bfd4dc8746066e8505bf23fa9.desktop;
+x-scheme-handler/ton=org.telegram.desktop._7a2ecce0b3c23d86fb8b8a6991f46947.desktop;org.telegram.desktop._dd24012bfd4dc8746066e8505bf23fa9.desktop;
+text/plain=pycharm.desktop;

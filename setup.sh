@@ -29,18 +29,127 @@ get_installed_version() {
 	"$1" --version 2>/dev/null | head -n 1 | awk '{print $2}'
 }
 
+add_shell_extension() {
+	current_list=$(gsettings get org.gnome.shell enabled-extensions |
+		sed 's/^@as //')
+	case "$current_list" in
+	*"'$1'"*) ;;
+	*)
+		stripped=${current_list#\[}
+		stripped=${stripped%\]}
+		stripped=$(printf '%s' "$stripped" |
+			sed 's/^[[:space:]]*//; s/[[:space:]]*$//')
+		if [ -z "$stripped" ]; then
+			gsettings set org.gnome.shell enabled-extensions "['$1']"
+		else
+			gsettings set org.gnome.shell enabled-extensions \
+				"[$stripped, '$1']"
+		fi
+		;;
+	esac
+}
+
 sudo -v || exit 1
 
-sudo apt-get install -y ibus ibus-unikey
+sudo apt-get install -y fcitx5 fcitx5-frontend-all fcitx5-config-qt \
+	fcitx5-modules im-config acl python3-qtpy python3-pyqt6 \
+	gnome-shell-extension-appindicator python3-dbus
+
+if dpkg -s ibus-unikey >/dev/null 2>&1; then
+	sudo apt-get purge -y ibus-unikey
+fi
+
+repository=LotusInputMethod/fcitx5-lotus
+release_tag=$(get_latest_release_tag "$repository")
+desired_version=${release_tag#v}
+installed_version=$(dpkg-query -W -f='${Version}' fcitx5-lotus 2>/dev/null |
+	cut -d- -f1)
+if [ "$installed_version" != "$desired_version" ]; then
+	distribution_codename=$(cd / && . /etc/os-release &&
+		printf '%s' "$VERSION_CODENAME")
+	download_path=$(mktemp --suffix=.deb)
+	download_base_url="https://github.com/$repository/releases/download"
+	release_asset="fcitx5-lotus_${desired_version}-1_amd64_${distribution_codename}.deb"
+	curl -fsSL -o "$download_path" \
+		"$download_base_url/$release_tag/$release_asset"
+	sudo apt-get install -y "$download_path"
+	rm -f "$download_path"
+fi
+
+im-config -n fcitx5
+
+# fcitx5 rewrites these with an atomic replace, which would clobber a symlink
+fcitx_seed_directory="$PWD/.config/fcitx5"
+mkdir -p "$HOME/.config/fcitx5/conf"
+for fcitx_seed in config profile conf/lotus.conf; do
+	[ -e "$HOME/.config/fcitx5/$fcitx_seed" ] ||
+		cp "$fcitx_seed_directory/$fcitx_seed" \
+			"$HOME/.config/fcitx5/$fcitx_seed"
+done
+
+icon_theme_source="$PWD/.local/share/icons/fcitx-letter"
+if [ -d "$icon_theme_source" ]; then
+	rm -rf "$HOME/.local/share/icons/fcitx-letter"
+	cp -R "$icon_theme_source" "$HOME/.local/share/icons/fcitx-letter"
+	gtk-update-icon-cache -f -t "$HOME/.local/share/icons/fcitx-letter" \
+		2>/dev/null || true
+fi
 
 if command -v gsettings >/dev/null 2>&1; then
-	gsettings set org.gnome.desktop.input-sources sources \
-		"[('xkb', 'us'), ('ibus', 'Unikey')]"
-	gsettings set org.gnome.desktop.wm.keybindings switch-input-source \
-		"['<Control>alt_L']"
+	gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us')]"
+	gsettings set org.gnome.desktop.wm.keybindings switch-input-source "[]"
 	gsettings set \
-		org.gnome.desktop.wm.keybindings switch-input-source-backward \
-		"['<Control>alt_R']"
+		org.gnome.desktop.wm.keybindings switch-input-source-backward "[]"
+
+	# libadwaita apps follow color-scheme, legacy GTK/Qt apps need the dark
+	# variant of the GTK theme (gsd-xsettings does not map color-scheme).
+	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+	gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+
+	add_shell_extension 'ubuntu-appindicators@ubuntu.com'
+
+  appindicator_directory=/usr/share/gnome-shell/extensions/ubuntu-appindicators@ubuntu.com
+	appindicator_stylesheet="$appindicator_directory/user.css"
+	if [ -d "$appindicator_directory" ] &&
+		! grep -q 'natural-hpadding: 6px' \
+			"$appindicator_stylesheet" 2>/dev/null; then
+		sudo tee "$appindicator_stylesheet" >/dev/null <<'CSS'
+#panel .panel-button {
+    -natural-hpadding: 6px;
+    -minimum-hpadding: 4px;
+}
+CSS
+		gnome-extensions disable ubuntu-appindicators@ubuntu.com \
+			2>/dev/null || true
+		gnome-extensions enable ubuntu-appindicators@ubuntu.com \
+			2>/dev/null || true
+	fi
+
+	icon_theme=$(gsettings get org.gnome.desktop.interface icon-theme |
+		tr -d "'")
+	case "$icon_theme" in
+	Adwaita | fcitx-letter)
+		gsettings set org.gnome.desktop.interface icon-theme \
+			fcitx-letter
+		;;
+	esac
+
+	gsettings set org.gnome.desktop.default-applications.terminal exec \
+		"$HOME/.local/bin/kitty"
+	gsettings set org.gnome.desktop.default-applications.terminal exec-arg ''
+
+	kitty_keybinding_path='/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/'
+	gsettings set \
+		org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:"$kitty_keybinding_path" \
+		name 'Kitty'
+	gsettings set \
+		org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:"$kitty_keybinding_path" \
+		command "$HOME/.local/bin/kitty"
+	gsettings set \
+		org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:"$kitty_keybinding_path" \
+		binding '<Control><Alt>t'
+	gsettings set org.gnome.settings-daemon.plugins.media-keys \
+		custom-keybindings "['$kitty_keybinding_path']"
 fi
 
 sudo apt-get install -y stow git curl wget xclip zsh \
@@ -229,6 +338,17 @@ for desktop_entry in kitty.desktop kitty-open.desktop; do
 		"$desktop_source_path" >"$desktop_target_path"
 	printf 'StartupWMClass=kitty\n' >>"$desktop_target_path"
 done
+
+mkdir -p "$HOME/.local/bin" "$HOME/.local/share/applications"
 update-desktop-database "$HOME/.local/share/applications" 2>/dev/null || true
 
-stow --target="$HOME" --ignore='setup\.sh' --ignore='\.git' .
+if [ -x "$HOME/.local/bin/kitty" ]; then
+	sudo update-alternatives --install /usr/bin/x-terminal-emulator \
+		x-terminal-emulator "$HOME/.local/bin/kitty" 50
+	sudo update-alternatives --set x-terminal-emulator "$HOME/.local/bin/kitty"
+fi
+
+stow --target="$HOME" --ignore='setup\.sh' --ignore='\.git' --ignore='\.local' \
+	--ignore='\.config/fcitx5' .
+
+sudo systemctl enable --now "fcitx5-lotus-server@$(id -un).service"
